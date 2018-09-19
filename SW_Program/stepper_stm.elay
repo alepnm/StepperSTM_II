@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<EmBitz_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="Core\BSP\board\board.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4806" topLine="67" />
+		</Cursor>
+	</File>
+	<File name="Core\BSP\board\hw_typedefs.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="62" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Core\BSP\comp\M25AAx\M25AAxx.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5534" topLine="197" />
+		</Cursor>
+	</File>
+	<File name="Core\BSP\comp\M25AAx\M25AAxx.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="252" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="Core\Inc\common.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="318" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Core\Inc\main.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5933" topLine="110" />
+		</Cursor>
+	</File>
+	<File name="Core\Inc\user_mb_app.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9364" topLine="145" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\modbus\functions\mbfunccoils.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2056" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\modbus\functions\mbutils.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2531" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\modbus\include\mb.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6309" topLine="131" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\modbus\include\mbport.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2418" topLine="35" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\modbus\mb.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10082" topLine="308" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\modbus\rtu\mbrtu.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5577" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\port\port.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1547" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\port\portserial.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1510" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\freemodbus\port\porttimer.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1598" topLine="8" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\systick\systick.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="174" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Core\libs\systick\systick.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="314" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Core\Src\board.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9852" topLine="311" />
+		</Cursor>
+	</File>
+	<File name="Core\Src\main.c" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6736" topLine="57" />
+		</Cursor>
+	</File>
+	<File name="Core\Src\stm32f0xx_it.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3184" topLine="45" />
+		</Cursor>
+	</File>
+	<File name="Core\Src\system_stm32f0xx.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6618" topLine="143" />
+		</Cursor>
+	</File>
+	<File name="Core\Src\user_mb_app.c" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="810" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Drivers\CMSIS\Include\core_cm0.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4511" topLine="73" />
+		</Cursor>
+	</File>
+	<File name="Drivers\STM32F0xx_HAL_Driver\Inc\stm32f0xx_hal_def.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2659" topLine="36" />
+		</Cursor>
+	</File>
+	<File name="startup\startup_stm32f0xx.S" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6304" topLine="124" />
+		</Cursor>
+	</File>
+</EmBitz_layout_file>

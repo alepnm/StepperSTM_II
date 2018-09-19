@@ -1,0 +1,8 @@
+#ifndef HW_TYPEDEFS_H_INCLUDED
+#define HW_TYPEDEFS_H_INCLUDED
+
+
+
+
+
+#endif /* HW_TYPEDEFS_H_INCLUDED */

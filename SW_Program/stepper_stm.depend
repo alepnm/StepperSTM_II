@@ -1,0 +1,4044 @@
+# depslib dependency file v1.0
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\port\port.h
+	"stm32f0xx_hal.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\main.h
+	<stdint.h>
+	"stm32f0xx.h"
+	"fsm_states.h"
+	"l6470.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\include\cmsis_armcc.h
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\include\cmsis_gcc.h
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\inc\fsm_states.h
+	"stm32f0xx_hal.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\l6470.h
+	<stdbool.h>
+	"common.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\inc\common.h
+	<stdint.h>
+	"stm32f0xx.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1521112958 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbconfig.h
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\ascii\mbascii.h
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncdiag.c
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbutils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\mb.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbfunc.h
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1521203050 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"uart.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\uart.h
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\port\port.c
+	"port.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\port\portserial.c
+	"common.h"
+	"port.h"
+	"uart.h"
+	"mb.h"
+	"mbport.h"
+
+1521203674 source:h:\ventmatika\projects\stepper_stm\software\drivers\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1521112959 source:h:\ventmatika\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\delay.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\inc\delay.h
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\fsm_states.c
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+	"common.h"
+	"fsm_states.h"
+	"user_mb_app.h"
+	"l6470.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\l6470.c
+	<math.h>
+	<stdlib.h>
+	"l6470.h"
+	"user_mb_app.h"
+
+1505890510 h:\ventmatika\projects\stepper_stm\software\inc\tim_delay.h
+
+1519995389 source:h:\ventmatika\projects\stepper_stm\software\src\lcd_i2c.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+	"lcd_i2c.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\lcd_i2c.h
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\m25aa02.c
+	"M25AA02.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\inc\m25aa02.h
+	"stm32f0xx_hal.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<stdlib.h>
+	<string.h>
+	"common.h"
+	"sound.h"
+	"mb.h"
+	"mbport.h"
+	"uart.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"l6470.h"
+	"fsm_states.h"
+	"stp_functions.h"
+	"lcd_i2c.h"
+	"delay.h"
+	"pcf8574.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\sound.h
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\pcf8574.h
+	<stdbool.h>
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\pcf8574.c
+	"stm32f0xx_hal.h"
+	"pcf8574.h"
+	"delay.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\sound.c
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	"sound.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\spi_hw.c
+	"spi_hw.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\spi_hw.h
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"port.h"
+	"user_mb_app.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\tim_delay.c
+	"stm32f0xx_hal.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\uart.c
+	"common.h"
+	"uart.h"
+	"user_mb_app.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\user_mb_app.c
+	"user_mb_app.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\startup\startup_stm32f0xx.s
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\port\port.h
+	"stm32f0xx_hal.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1512507072 e:\projects\stepper_stm\software\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1512509406 e:\projects\stepper_stm\software\inc\main.h
+	<stdint.h>
+	"stm32f0xx.h"
+	"fsm_states.h"
+	"l6470.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1501801442 e:\projects\stepper_stm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1501801443 e:\projects\stepper_stm\software\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1501801443 e:\projects\stepper_stm\software\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1501801443 e:\projects\stepper_stm\software\drivers\cmsis\include\cmsis_armcc.h
+
+1501801443 e:\projects\stepper_stm\software\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1501801443 e:\projects\stepper_stm\software\drivers\cmsis\include\cmsis_gcc.h
+
+1501801443 e:\projects\stepper_stm\software\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1501801442 e:\projects\stepper_stm\software\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1507571921 e:\projects\stepper_stm\software\inc\fsm_states.h
+	"stm32f0xx_hal.h"
+
+1510859846 e:\projects\stepper_stm\software\inc\l6470.h
+	<stdbool.h>
+	"common.h"
+
+1509112346 e:\projects\stepper_stm\software\inc\common.h
+	<stdint.h>
+	"stm32f0xx.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1501801444 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1509031124 e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1512151416 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbconfig.h
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\ascii\mbascii.h
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1509306085 e:\projects\stepper_stm\software\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncdiag.c
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1512151809 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\functions\mbutils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\mb.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\include\mbfunc.h
+
+1507571921 e:\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"uart.h"
+
+1508942609 e:\projects\stepper_stm\software\inc\uart.h
+	"stm32f0xx_hal.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\port\port.c
+	"port.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\port\portserial.c
+	"common.h"
+	"port.h"
+	"uart.h"
+	"mb.h"
+	"mbport.h"
+
+1507571921 source:e:\projects\stepper_stm\software\drivers\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1501801444 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1509031124 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1501801444 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1501801444 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1509031125 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1509031125 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1509031125 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1509031125 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1509031125 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1509031125 source:e:\projects\stepper_stm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1509112346 source:e:\projects\stepper_stm\software\src\delay.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+
+1509112346 e:\projects\stepper_stm\software\inc\delay.h
+
+1509302877 source:e:\projects\stepper_stm\software\src\fsm_states.c
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+	"common.h"
+	"fsm_states.h"
+	"user_mb_app.h"
+	"l6470.h"
+
+1509565496 source:e:\projects\stepper_stm\software\src\lcd_i2c.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+	"lcd_i2c.h"
+
+1509112346 e:\projects\stepper_stm\software\inc\lcd_i2c.h
+
+1507571921 source:e:\projects\stepper_stm\software\src\m25aa02.c
+	"M25AA02.h"
+	"tim_delay.h"
+
+1507571921 e:\projects\stepper_stm\software\inc\m25aa02.h
+	"stm32f0xx_hal.h"
+
+1507571921 e:\projects\stepper_stm\software\inc\tim_delay.h
+
+1512506065 source:e:\projects\stepper_stm\software\src\pcf8574.c
+	"stm32f0xx_hal.h"
+	"pcf8574.h"
+	"delay.h"
+
+1509644787 e:\projects\stepper_stm\software\inc\pcf8574.h
+	<stdbool.h>
+
+1507571921 source:e:\projects\stepper_stm\software\src\sound.c
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	"sound.h"
+
+1507571921 e:\projects\stepper_stm\software\inc\sound.h
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+
+1507571921 source:e:\projects\stepper_stm\software\src\spi_hw.c
+	"spi_hw.h"
+
+1507571921 e:\projects\stepper_stm\software\inc\spi_hw.h
+
+1512507072 source:e:\projects\stepper_stm\software\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1512507071 source:e:\projects\stepper_stm\software\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"port.h"
+	"user_mb_app.h"
+
+1512507071 e:\projects\stepper_stm\software\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1507571921 source:e:\projects\stepper_stm\software\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1507571921 source:e:\projects\stepper_stm\software\src\tim_delay.c
+	"stm32f0xx_hal.h"
+	"tim_delay.h"
+
+1508942609 source:e:\projects\stepper_stm\software\src\uart.c
+	"common.h"
+	"uart.h"
+	"user_mb_app.h"
+
+1507571921 source:e:\projects\stepper_stm\software\src\user_mb_app.c
+	"user_mb_app.h"
+
+1507571921 source:e:\projects\stepper_stm\software\startup\startup_stm32f0xx.s
+
+1512509204 source:e:\projects\stepper_stm\software\src\l6470.c
+	<math.h>
+	<stdlib.h>
+	"l6470.h"
+	"tim_delay.h"
+	"user_mb_app.h"
+
+1512510635 source:e:\projects\stepper_stm\software\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	<string.h>
+	"common.h"
+	"tim_delay.h"
+	"sound.h"
+	"mb.h"
+	"mbport.h"
+	"uart.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"l6470.h"
+	"fsm_states.h"
+	"lcd_i2c.h"
+	"delay.h"
+	"pcf8574.h"
+
+1513928782 h:\ventmatika\projects\stepper_stm\software\inc\fsm.h
+
+1513933806 source:h:\ventmatika\projects\stepper_stm\software\src\fsm.c
+	"stdbool.h"
+	"common.h"
+	"fsm.h"
+
+1513936845 source:h:\ventmatika\projects\stepper_stm\software\src\fsm_1.c
+	<stdlib.h>
+	<string.h>
+	"fsm_1.h"
+
+1513936306 h:\ventmatika\projects\stepper_stm\software\inc\fsm_1.h
+
+1513943482 source:h:\ventmatika\projects\stepper_stm\software\drivers\fsm0\fsm.c
+	"stdbool.h"
+	"common.h"
+	"fsm.h"
+
+1519397988 h:\ventmatika\projects\stepper_stm\software\drivers\fsm0\fsm.h
+
+1519397988 h:\ventmatika\projects\stepper_stm\software\drivers\fsm1\fsm.h
+
+1513943624 source:h:\ventmatika\projects\stepper_stm\software\drivers\fsm1\fsm.c
+	<stdlib.h>
+	"fsm.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\port\port.h
+	"stm32f0xx_hal.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1521235910 e:\projects\stepperstm\software\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1521235911 e:\projects\stepperstm\software\inc\main.h
+	<stdint.h>
+	"stm32f0xx.h"
+	"fsm_states.h"
+	"l6470.h"
+
+1512940281 e:\projects\stepperstm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1512940281 e:\projects\stepperstm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1512940285 e:\projects\stepperstm\software\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1512940285 e:\projects\stepperstm\software\drivers\cmsis\include\cmsis_armcc.h
+
+1512940285 e:\projects\stepperstm\software\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1512940285 e:\projects\stepperstm\software\drivers\cmsis\include\cmsis_gcc.h
+
+1512940285 e:\projects\stepperstm\software\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1512940281 e:\projects\stepperstm\software\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1519412318 e:\projects\stepperstm\software\inc\fsm_states.h
+	"stm32f0xx_hal.h"
+
+1521231261 e:\projects\stepperstm\software\inc\l6470.h
+	<stdbool.h>
+	"common.h"
+
+1519412318 e:\projects\stepperstm\software\inc\common.h
+	<stdint.h>
+	"stm32f0xx.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1512940285 e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbconfig.h
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\ascii\mbascii.h
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1521231261 e:\projects\stepperstm\software\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncdiag.c
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbutils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\mb.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbfunc.h
+
+1519412318 e:\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1521327536 source:e:\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"uart.h"
+
+1519412318 e:\projects\stepperstm\software\inc\uart.h
+	"stm32f0xx_hal.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\port\port.c
+	"port.h"
+
+1519412318 source:e:\projects\stepperstm\software\drivers\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1521327713 source:e:\projects\stepperstm\software\drivers\freemodbus\port\portserial.c
+	"common.h"
+	"port.h"
+	"uart.h"
+	"mb.h"
+	"mbport.h"
+
+1521327534 source:e:\projects\stepperstm\software\drivers\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1517598596 source:e:\projects\stepperstm\software\drivers\fsm0\fsm.c
+	"stdbool.h"
+	"common.h"
+	"fsm.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\fsm0\fsm.h
+
+1517598596 source:e:\projects\stepperstm\software\drivers\fsm1\fsm.c
+	<stdlib.h>
+	"fsm.h"
+
+1519412318 e:\projects\stepperstm\software\drivers\fsm1\fsm.h
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1512940285 source:e:\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\delay.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+
+1519412318 e:\projects\stepperstm\software\inc\delay.h
+
+1520087071 source:e:\projects\stepperstm\software\src\fsm_states.c
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+	"common.h"
+	"fsm_states.h"
+	"user_mb_app.h"
+	"l6470.h"
+
+1521282898 source:e:\projects\stepperstm\software\src\l6470.c
+	<math.h>
+	<stdlib.h>
+	"l6470.h"
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\lcd_i2c.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+	"lcd_i2c.h"
+
+1519412318 e:\projects\stepperstm\software\inc\lcd_i2c.h
+
+1521291053 source:e:\projects\stepperstm\software\src\m25aa02.c
+	"M25AA02.h"
+
+1521241851 e:\projects\stepperstm\software\inc\m25aa02.h
+	<stdbool.h>
+	<stdint.h>
+	"stm32f0xx_hal.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\pcf8574.c
+	"stm32f0xx_hal.h"
+	"pcf8574.h"
+	"delay.h"
+
+1519412318 e:\projects\stepperstm\software\inc\pcf8574.h
+	<stdbool.h>
+
+1519412318 source:e:\projects\stepperstm\software\src\sound.c
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	"sound.h"
+
+1519412318 e:\projects\stepperstm\software\inc\sound.h
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\spi_hw.c
+	"spi_hw.h"
+
+1519412318 e:\projects\stepperstm\software\inc\spi_hw.h
+
+1521235910 source:e:\projects\stepperstm\software\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1521235910 source:e:\projects\stepperstm\software\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"port.h"
+	"user_mb_app.h"
+
+1521235910 e:\projects\stepperstm\software\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\tim_delay.c
+	"stm32f0xx_hal.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\uart.c
+	"common.h"
+	"uart.h"
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\src\user_mb_app.c
+	"user_mb_app.h"
+
+1519412318 source:e:\projects\stepperstm\software\startup\startup_stm32f0xx.s
+
+1521235911 source:e:\projects\stepperstm\software\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<stdlib.h>
+	<string.h>
+	"common.h"
+	"sound.h"
+	"mb.h"
+	"mbport.h"
+	"uart.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"l6470.h"
+	"fsm_states.h"
+	"stp_functions.h"
+	"lcd_i2c.h"
+	"delay.h"
+	"pcf8574.h"
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\stp_functions.c
+	"stp_functions.h"
+	"main.h"
+	"user_mb_app.h"
+
+1521112960 h:\ventmatika\projects\stepper_stm\software\inc\stp_functions.h
+
+1520087071 source:e:\projects\stepperstm\software\src\stp_functions.c
+	"stp_functions.h"
+	"main.h"
+	"user_mb_app.h"
+
+1519412318 e:\projects\stepperstm\software\inc\stp_functions.h
+
+1520087071 source:e:\projects\stepperstm\software\src\conv_table.c
+	"conv_table.h"
+
+1520087071 e:\projects\stepperstm\software\inc\conv_table.h
+	<stdint.h>
+
+1521112960 source:h:\ventmatika\projects\stepper_stm\software\src\conv_table.c
+	"conv_table.h"
+
+1521112959 h:\ventmatika\projects\stepper_stm\software\inc\conv_table.h
+	<stdint.h>
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\port\port.h
+	"stm32f0xx_hal.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\main.h
+	<stdint.h>
+	"stm32f0xx.h"
+	"fsm_states.h"
+	"l6470.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\include\cmsis_armcc.h
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\include\cmsis_gcc.h
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\fsm_states.h
+	"stm32f0xx_hal.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\l6470.h
+	<stdbool.h>
+	"common.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\common.h
+	<stdint.h>
+	"stm32f0xx.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1522150223 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbconfig.h
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\ascii\mbascii.h
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1523284033 h:\ventmatika\projects\stepperstm\software\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncdiag.c
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\functions\mbutils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\mb.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\include\mbfunc.h
+
+1522150224 h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"uart.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\uart.h
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\port\port.c
+	"port.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\port\portserial.c
+	"common.h"
+	"port.h"
+	"uart.h"
+	"mb.h"
+	"mbport.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1522150224 source:h:\ventmatika\projects\stepperstm\software\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\conv_table.c
+	"conv_table.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\conv_table.h
+	<stdint.h>
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\delay.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\delay.h
+
+1523281684 source:h:\ventmatika\projects\stepperstm\software\src\fsm_states.c
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+	"common.h"
+	"fsm_states.h"
+	"user_mb_app.h"
+	"l6470.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\m25aa02.c
+	"M25AA02.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\m25aa02.h
+	<stdbool.h>
+	<stdint.h>
+	"stm32f0xx_hal.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\pcf8574.c
+	"stm32f0xx_hal.h"
+	"pcf8574.h"
+	"delay.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\pcf8574.h
+	<stdbool.h>
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\sound.c
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	"sound.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\sound.h
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\spi_hw.c
+	"spi_hw.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\spi_hw.h
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\tim_delay.c
+	"stm32f0xx_hal.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\uart.c
+	"common.h"
+	"uart.h"
+	"user_mb_app.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\user_mb_app.c
+	"user_mb_app.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\startup\startup_stm32f0xx.s
+
+1523282103 source:h:\ventmatika\projects\stepperstm\software\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<stdlib.h>
+	<string.h>
+	"common.h"
+	"sound.h"
+	"mb.h"
+	"mbport.h"
+	"uart.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"l6470.h"
+	"fsm_states.h"
+	"stp_functions.h"
+	"lcd_i2c.h"
+	"delay.h"
+	"pcf8574.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\stp_functions.h
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\lcd_i2c.h
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"port.h"
+	"user_mb_app.h"
+
+1522150224 h:\ventmatika\projects\stepperstm\software\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1522150225 source:h:\ventmatika\projects\stepperstm\software\src\stp_functions.c
+	"stp_functions.h"
+	"main.h"
+	"user_mb_app.h"
+
+1523282574 source:h:\ventmatika\projects\stepperstm\software\src\l6470.c
+	<math.h>
+	<stdlib.h>
+	"l6470.h"
+	"user_mb_app.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\port\port.h
+	"stm32f0xx_hal.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\main.h
+	<stdint.h>
+	"stm32f0xx.h"
+	"fsm_states.h"
+	"l6470.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\include\cmsis_armcc.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\include\cmsis_gcc.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\fsm_states.h
+	"stm32f0xx_hal.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\l6470.h
+	<stdbool.h>
+	"common.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\common.h
+	<stdint.h>
+	"stm32f0xx.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbconfig.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\ascii\mbascii.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncdiag.c
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbutils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\mb.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbfunc.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"uart.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\uart.h
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\port\port.c
+	"port.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\port\portserial.c
+	"common.h"
+	"port.h"
+	"uart.h"
+	"mb.h"
+	"mbport.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\src\conv_table.c
+	"conv_table.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\conv_table.h
+	<stdint.h>
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\src\delay.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\delay.h
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\src\fsm_states.c
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+	"common.h"
+	"fsm_states.h"
+	"user_mb_app.h"
+	"l6470.h"
+
+1525359701 source:h:\ventmatika\projects\stepperstm\sw_program\src\m25aa02.c
+	"M25AA02.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\m25aa02.h
+	<stdbool.h>
+	<stdint.h>
+	"stm32f0xx_hal.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<stdlib.h>
+	<string.h>
+	"common.h"
+	"sound.h"
+	"mb.h"
+	"mbport.h"
+	"uart.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"l6470.h"
+	"fsm_states.h"
+	"stp_functions.h"
+	"lcd_i2c.h"
+	"delay.h"
+	"pcf8574.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\sound.h
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\stp_functions.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\lcd_i2c.h
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\pcf8574.h
+	<stdbool.h>
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\pcf8574.c
+	"stm32f0xx_hal.h"
+	"pcf8574.h"
+	"delay.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\sound.c
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	"sound.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\spi_hw.c
+	"spi_hw.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\spi_hw.h
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"port.h"
+	"user_mb_app.h"
+
+1525359701 h:\ventmatika\projects\stepperstm\sw_program\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\stp_functions.c
+	"stp_functions.h"
+	"main.h"
+	"user_mb_app.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\tim_delay.c
+	"stm32f0xx_hal.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\uart.c
+	"common.h"
+	"uart.h"
+	"user_mb_app.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\src\user_mb_app.c
+	"user_mb_app.h"
+
+1525359702 source:h:\ventmatika\projects\stepperstm\sw_program\startup\startup_stm32f0xx.s
+
+1526894439 source:h:\ventmatika\projects\stepperstm\sw_program\src\l6470.c
+	<math.h>
+	<stdlib.h>
+	"l6470.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\port\port.h
+	"stm32f0xx_hal.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1533113630 c:\working\git\stepperstm\sw_program\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1533113645 c:\working\git\stepperstm\sw_program\inc\main.h
+	<stdint.h>
+	"stm32f0xx.h"
+	"fsm_states.h"
+	"l6470.h"
+
+1509027294 c:\working\git\stepperstm\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1509027294 c:\working\git\stepperstm\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\cmsis\include\cmsis_armcc.h
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\cmsis\include\cmsis_gcc.h
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1509027294 c:\working\git\stepperstm\sw_program\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1527176686 c:\working\git\stepperstm\sw_program\inc\fsm_states.h
+	"stm32f0xx_hal.h"
+
+1527760523 c:\working\git\stepperstm\sw_program\inc\l6470.h
+	<stdbool.h>
+	"common.h"
+
+1531478139 c:\working\git\stepperstm\sw_program\inc\common.h
+	<stdint.h>
+	"stm32f0xx.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1509027297 c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1529483004 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbconfig.h
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\ascii\mbascii.h
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1535372933 c:\working\git\stepperstm\sw_program\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncdiag.c
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\functions\mbutils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1529483016 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\mb.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\include\mbfunc.h
+
+1527176686 c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1529484027 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"uart.h"
+
+1529479841 c:\working\git\stepperstm\sw_program\inc\uart.h
+	"stm32f0xx_hal.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\port\port.c
+	"port.h"
+
+1527176686 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1528897353 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\port\portserial.c
+	"common.h"
+	"port.h"
+	"uart.h"
+	"mb.h"
+	"mbport.h"
+
+1529484384 source:c:\working\git\stepperstm\sw_program\drivers\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1527176687 source:c:\working\git\stepperstm\sw_program\src\conv_table.c
+	"conv_table.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\inc\conv_table.h
+	<stdint.h>
+
+1527176687 source:c:\working\git\stepperstm\sw_program\src\delay.c
+	"stm32f0xx_hal.h"
+	"delay.h"
+
+1527176686 c:\working\git\stepperstm\sw_program\inc\delay.h
+
+1531479433 source:c:\working\git\stepperstm\sw_program\src\fsm_states.c
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+	"common.h"
+	"fsm_states.h"
+	"user_mb_app.h"
+	"l6470.h"
+
+1535438209 source:c:\working\git\stepperstm\sw_program\src\l6470.c
+	<math.h>
+	<stdlib.h>
+	"l6470.h"
+	"user_mb_app.h"
+
+1532335114 source:c:\working\git\stepperstm\sw_program\src\m25aa02.c
+	<stdlib.h>
+	"M25AA02.h"
+
+1532335111 c:\working\git\stepperstm\sw_program\inc\m25aa02.h
+	<stdbool.h>
+	<stdint.h>
+	"stm32f0xx_hal.h"
+
+1535438773 source:c:\working\git\stepperstm\sw_program\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<stdlib.h>
+	<string.h>
+	"common.h"
+	"sound.h"
+	"mb.h"
+	"mbport.h"
+	"uart.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"l6470.h"
+	"fsm_states.h"
+	"stp_functions.h"
+	"lcd_i2c.h"
+	"delay.h"
+	"pcf8574.h"
+
+1529935453 c:\working\git\stepperstm\sw_program\inc\sound.h
+	<stdbool.h>
+	"stm32f0xx_hal.h"
+
+1531120498 c:\working\git\stepperstm\sw_program\inc\stp_functions.h
+	<stdbool.h>
+	<stdint.h>
+
+1527176686 c:\working\git\stepperstm\sw_program\inc\lcd_i2c.h
+
+1527176686 c:\working\git\stepperstm\sw_program\inc\pcf8574.h
+	<stdbool.h>
+
+1527176687 source:c:\working\git\stepperstm\sw_program\src\pcf8574.c
+	"stm32f0xx_hal.h"
+	"pcf8574.h"
+	"delay.h"
+
+1531140083 source:c:\working\git\stepperstm\sw_program\src\sound.c
+	"stm32f0xx_hal.h"
+	<stdbool.h>
+	"sound.h"
+	"user_mb_app.h"
+
+1532335111 source:c:\working\git\stepperstm\sw_program\src\spi_hw.c
+	"spi_hw.h"
+
+1532335111 c:\working\git\stepperstm\sw_program\inc\spi_hw.h
+
+1533113630 source:c:\working\git\stepperstm\sw_program\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1533113629 source:c:\working\git\stepperstm\sw_program\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"port.h"
+	"user_mb_app.h"
+
+1533113629 c:\working\git\stepperstm\sw_program\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1533820845 source:c:\working\git\stepperstm\sw_program\src\stp_functions.c
+	"stp_functions.h"
+	"main.h"
+	"user_mb_app.h"
+	"M25AA02.h"
+	"sound.h"
+
+1527176687 source:c:\working\git\stepperstm\sw_program\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1527176687 source:c:\working\git\stepperstm\sw_program\src\tim_delay.c
+	"stm32f0xx_hal.h"
+
+1529482201 source:c:\working\git\stepperstm\sw_program\src\uart.c
+	"common.h"
+	"uart.h"
+	"user_mb_app.h"
+
+1527176687 source:c:\working\git\stepperstm\sw_program\src\user_mb_app.c
+	"user_mb_app.h"
+
+1527176687 source:c:\working\git\stepperstm\sw_program\startup\startup_stm32f0xx.s
+
+1529486343 c:\working\git\stepperstm\sw_program\src\m25aa02.c
+	<stdlib.h>
+	"M25AA02.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\ascii\mbascii.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbascii.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+
+1537358007 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\port.h
+	"board.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
+	"stm32f0xx_hal_conf.h"
+
+1537345593 c:\working\git\stepperstm_ii\sw_program\core\inc\stm32f0xx_hal_conf.h
+	"main.h"
+	"stm32f0xx_hal_rcc.h"
+	"stm32f0xx_hal_exti.h"
+	"stm32f0xx_hal_gpio.h"
+	"stm32f0xx_hal_dma.h"
+	"stm32f0xx_hal_cortex.h"
+	"stm32f0xx_hal_adc.h"
+	"stm32f0xx_hal_can.h"
+	"stm32f0xx_hal_cec.h"
+	"stm32f0xx_hal_comp.h"
+	"stm32f0xx_hal_crc.h"
+	"stm32f0xx_hal_dac.h"
+	"stm32f0xx_hal_flash.h"
+	"stm32f0xx_hal_i2c.h"
+	"stm32f0xx_hal_i2s.h"
+	"stm32f0xx_hal_irda.h"
+	"stm32f0xx_hal_iwdg.h"
+	"stm32f0xx_hal_pcd.h"
+	"stm32f0xx_hal_pwr.h"
+	"stm32f0xx_hal_rtc.h"
+	"stm32f0xx_hal_smartcard.h"
+	"stm32f0xx_hal_smbus.h"
+	"stm32f0xx_hal_spi.h"
+	"stm32f0xx_hal_tim.h"
+	"stm32f0xx_hal_tsc.h"
+	"stm32f0xx_hal_uart.h"
+	"stm32f0xx_hal_usart.h"
+	"stm32f0xx_hal_wwdg.h"
+
+1537368140 c:\working\git\stepperstm_ii\sw_program\core\inc\main.h
+	<stdint.h>
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rcc_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_def.h
+	"stm32f0xx.h"
+	"Legacy/stm32_hal_legacy.h"
+	<stdio.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+	"stm32f030x6.h"
+	"stm32f030x8.h"
+	"stm32f031x6.h"
+	"stm32f038xx.h"
+	"stm32f042x6.h"
+	"stm32f048xx.h"
+	"stm32f051x8.h"
+	"stm32f058xx.h"
+	"stm32f070x6.h"
+	"stm32f070xb.h"
+	"stm32f071xb.h"
+	"stm32f072xb.h"
+	"stm32f078xx.h"
+	"stm32f091xc.h"
+	"stm32f098xx.h"
+	"stm32f030xc.h"
+	"stm32f0xx_hal.h"
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f030x6.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\include\core_cm0.h
+	<stdint.h>
+	"core_cmInstr.h"
+	"core_cmFunc.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\include\core_cminstr.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\include\cmsis_armcc.h
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\include\cmsis_armcc_v6.h
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\include\cmsis_gcc.h
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\include\core_cmfunc.h
+	"cmsis_armcc.h"
+	"cmsis_armcc_V6.h"
+	"cmsis_gcc.h"
+	<cmsis_iar.h>
+	<cmsis_ccs.h>
+	<cmsis_csm.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\system_stm32f0xx.h
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f030x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f031x6.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f038xx.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f042x6.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f048xx.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f051x8.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f058xx.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f070x6.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f070xb.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f071xb.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f072xb.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f078xx.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f091xc.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f098xx.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027294 c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f030xc.h
+	"core_cm0.h"
+	"system_stm32f0xx.h"
+	<stdint.h>
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\legacy\stm32_hal_legacy.h
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_gpio_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_gpio_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dma_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dma_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cortex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_adc_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_adc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_can.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_cec.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_comp.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_crc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_crc_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_crc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_dac_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_dac_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_flash_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_flash_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_i2c_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2c_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_i2s.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_irda.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_irda_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_irda_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_iwdg.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pcd.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pcd_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pcd_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_pwr_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_pwr_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rtc.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_rtc_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rtc_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_smartcard.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_smartcard_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_smartcard_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_smbus.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_spi_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_spi_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_tim_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tim_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_tsc.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_uart_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_uart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_usart.h
+	"stm32f0xx_hal_def.h"
+	"stm32f0xx_hal_usart_ex.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_usart_ex.h
+	"stm32f0xx_hal_def.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_wwdg.h
+	"stm32f0xx_hal_def.h"
+
+1529483004 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mb.h
+	"port.h"
+	"mbport.h"
+	"mbproto.h"
+	"mbutils.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mbport.h
+	"port.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mbproto.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mbutils.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mbconfig.h
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\ascii\mbascii.h
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mbframe.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\rtu\mbcrc.h
+	"port.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbfunccoils.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1537361356 c:\working\git\stepperstm_ii\sw_program\core\inc\user_mb_app.h
+	"mb.h"
+	"mbconfig.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbfuncdiag.c
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbfuncdisc.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbfuncholding.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbfuncinput.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+	"user_mb_app.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbfuncother.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbconfig.h"
+
+1537350266 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\functions\mbutils.c
+	<assert.h>
+	<stdlib.h>
+	<string.h>
+	"port.h"
+	"mb.h"
+	"mbproto.h"
+	"user_mb_app.h"
+
+1537357948 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\mb.c
+	<stdlib.h>
+	<string.h>
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbframe.h"
+	"mbproto.h"
+	"mbfunc.h"
+	"mbport.h"
+	"mbrtu.h"
+	"mbascii.h"
+	"mbtcp.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\include\mbfunc.h
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\rtu\mbrtu.h
+	"mb.h"
+
+1527176686 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\tcp\mbtcp.h
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\rtu\mbcrc.c
+	"port.h"
+
+1537361438 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\rtu\mbrtu.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbrtu.h"
+	"mbframe.h"
+	"mbcrc.h"
+	"mbport.h"
+	"board.h"
+
+1537371418 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.h
+	"stm32f0xx_hal.h"
+	"common.h"
+	"hw_typedefs.h"
+	"systick.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\tcp\mbtcp.c
+	"stdlib.h"
+	"string.h"
+	"port.h"
+	"mb.h"
+	"mbconfig.h"
+	"mbtcp.h"
+	"mbframe.h"
+	"mbport.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\port.c
+	"port.h"
+
+1527176686 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\portevent.c
+	"mb.h"
+	"mbport.h"
+
+1537358367 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\porttimer.c
+	"port.h"
+	"mb.h"
+	"mbport.h"
+
+1527176687 source:c:\working\git\stepperstm_ii\sw_program\startup\startup_stm32f0xx.s
+
+1537371632 source:c:\working\git\stepperstm_ii\sw_program\core\src\main.c
+	"main.h"
+	"stm32f0xx_hal.h"
+	<string.h>
+	"mb.h"
+	"user_mb_app.h"
+	"M25AAxx.h"
+
+1537345593 source:c:\working\git\stepperstm_ii\sw_program\core\src\stm32f0xx_hal_msp.c
+	"stm32f0xx_hal.h"
+
+1537360315 source:c:\working\git\stepperstm_ii\sw_program\core\src\stm32f0xx_it.c
+	"stm32f0xx_hal.h"
+	"stm32f0xx.h"
+	"stm32f0xx_it.h"
+	"board.h"
+
+1537345592 c:\working\git\stepperstm_ii\sw_program\core\inc\stm32f0xx_it.h
+	"stm32f0xx_hal.h"
+	"main.h"
+
+1509027294 source:c:\working\git\stepperstm_ii\sw_program\core\src\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1537357908 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\portserial.c
+	"port.h"
+	"mb.h"
+
+1527176687 source:c:\working\git\stepperstm_ii\sw_program\core\src\user_mb_app.c
+	"user_mb_app.h"
+
+1509027294 source:c:\working\git\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\source\templates\system_stm32f0xx.c
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_adc_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_can.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cec.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_comp.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_cortex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_crc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_crc_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dac_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_dma.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_flash_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_gpio.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2c_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_i2s.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_irda.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_iwdg.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pcd.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pcd_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_pwr_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rcc_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rtc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_rtc_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_smartcard.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_smartcard_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_smbus.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_spi_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tim_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_tsc.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_uart_ex.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_usart.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_hal_wwdg.c
+	"stm32f0xx_hal.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_adc.c
+	"stm32f0xx_ll_adc.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_adc.h
+	"stm32f0xx.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_bus.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_comp.c
+	"stm32f0xx_ll_comp.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_comp.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_crc.c
+	"stm32f0xx_ll_crc.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_crc.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_crs.c
+	"stm32f0xx_ll_crs.h"
+	"stm32f0xx_ll_bus.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_crs.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_dac.c
+	"stm32f0xx_ll_dac.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_dac.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_dma.c
+	"stm32f0xx_ll_dma.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_dma.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_exti.c
+	"stm32f0xx_ll_exti.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_exti.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_gpio.c
+	"stm32f0xx_ll_gpio.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_gpio.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_i2c.c
+	"stm32f0xx_ll_i2c.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_i2c.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_pwr.c
+	"stm32f0xx_ll_pwr.h"
+	"stm32f0xx_ll_bus.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_pwr.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_rcc.c
+	"stm32f0xx_ll_rcc.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_rcc.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_rtc.c
+	"stm32f0xx_ll_rtc.h"
+	"stm32f0xx_ll_cortex.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_rtc.h
+	"stm32f0xx.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_cortex.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_spi.c
+	"stm32f0xx_ll_spi.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32f0xx_ll_rcc.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_spi.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_tim.c
+	"stm32f0xx_ll_tim.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_tim.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_usart.c
+	"stm32f0xx_ll_usart.h"
+	"stm32f0xx_ll_rcc.h"
+	"stm32f0xx_ll_bus.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_usart.h
+	"stm32f0xx.h"
+
+1509027297 source:c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_utils.c
+	"stm32f0xx_ll_rcc.h"
+	"stm32f0xx_ll_utils.h"
+	"stm32f0xx_ll_system.h"
+	"stm32_assert.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_utils.h
+	"stm32f0xx.h"
+
+1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_system.h
+	"stm32f0xx.h"
+
+1537355209 c:\working\git\stepperstm_ii\sw_program\core\inc\common.h
+
+1537371503 source:c:\working\git\stepperstm_ii\sw_program\core\src\board.c
+	"board.h"
+	"user_mb_app.h"
+
+1537362298 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\hw_typedefs.h
+
+1537361245 source:c:\working\git\stepperstm_ii\sw_program\core\libs\systick\systick.c
+	"board.h"
+	"systick.h"
+
+1537251678 c:\working\git\stepperstm_ii\sw_program\core\libs\systick\systick.h
+
+1537370815 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
+	<stdlib.h>
+	"M25AAxx.h"
+	"board.h"
+
+1537370815 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
+	<stdbool.h>
+	<stdint.h>
+

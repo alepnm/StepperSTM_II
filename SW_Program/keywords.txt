@@ -1,0 +1,65 @@
+Keywords #1
+extern void typedef enum struct switch case
+break default if else do while continue for
+return byte char int8_t uint8_t uint16_t uint32_t
+uint64_t float double const static volatile
+unsigned signed long int32_t int16_t inline
+
+BOOL
+UCHAR
+USHORT
+ULONG
+
+
+Keywords #2
+FunctionalState
+FlagStatus
+GPIO_PIN_SET
+GPIO_PIN_RESET
+ADC_ChannelConfTypeDef
+ADC_HandleTypeDef
+DAC_HandleTypeDef
+GPIO_InitTypeDef
+GPIO_PinState
+GPIO_TypeDef
+HAL_StatusTypeDef
+I2C_HandleTypeDef
+IWDG_HandleTypeDef
+RCC_ClkInitTypeDef
+RCC_OscInitTypeDef
+RCC_PeriphCLKInitTypeDef
+TIM_BreakDeadTimeConfigTypeDef
+TIM_HandleTypeDef
+TIM_IC_InitTypeDef
+TIM_MasterConfigTypeDef
+TIM_OC_InitTypeDef
+UART_HandleTypeDef
+UART_InitTypeDef
+USART_TypeDef
+
+
+eMBErrorCode
+eMBMasterReqErrCode
+eMBException
+eMBPortType
+eMBMode
+eMBRegisterMode
+eMBMasterTimerMode
+eMBMasterReqErrCode
+eMBParity
+eMBState
+eMBMasterEventType
+eMBMasterErrorEventType
+
+osMutexId
+osThreadId
+osTimerId
+osSemaphoreId
+osMessageQId
+osPoolId
+osPoolDef
+osMessageQDef
+
+MB_UnitTypedef
+MB_CmdTypeDef
+
