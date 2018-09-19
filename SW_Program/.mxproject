@@ -5,5 +5,4 @@ LibFiles=Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_adc.h;Drivers/STM32F0xx_
 SourceFiles=;;
 
 [PreviousGenFiles]
-SourceFiles=;
 

@@ -37,6 +37,7 @@
 
 /* USER CODE BEGIN 0 */
 #include "board.h"
+#include "sound.h"
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -112,6 +113,8 @@ void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
     SysTimeCounterUpdate();
+
+    SoundHandler();
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();

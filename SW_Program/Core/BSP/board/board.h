@@ -27,18 +27,38 @@
 #define FAULT_LED_TOGGLE()          HAL_GPIO_TogglePin(FAULT_LED_GPIO_Port, FAULT_LED_Pin)
 #define GET_FAULT_LED()             HAL_GPIO_ReadPin(FAULT_LED_GPIO_Port, FAULT_LED_Pin)
 
+#define POWER_ON()                  HAL_GPIO_WritePin(PWRON_GPIO_Port, PWRON_Pin, GPIO_PIN_SET)
+#define POWER_OFF()                 HAL_GPIO_WritePin(PWRON_GPIO_Port, PWRON_Pin, GPIO_PIN_RESET)
+
 #define COOLER_ON()                 HAL_GPIO_WritePin(COOLER_GPIO_Port, COOLER_Pin, GPIO_PIN_SET)
 #define COOLER_OFF()                HAL_GPIO_WritePin(COOLER_GPIO_Port, COOLER_Pin, GPIO_PIN_RESET)
 #define RELAY_ON()                  HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_SET)
 #define RELAY_OFF()                 HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_RESET)
 
-#define L6470_EMERGENCY_STOP        HAL_GPIO_WritePin(L6470_RST_GPIO_Port, L6470_RST_Pin, GPIO_PIN_RESET); while(1);
+#define SLAVE_RS485_SEND_MODE       HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, TRUE)
+#define SLAVE_RS485_RECEIVE_MODE    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, FALSE)
 
-#define SLAVE_RS485_SEND_MODE       HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, TRUE);
-#define SLAVE_RS485_RECEIVE_MODE    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_12, FALSE);
+#define M25AA_CS_LOW()              HAL_GPIO_WritePin(M25AA_CS_GPIO_Port, M25AA_CS_Pin, GPIO_PIN_RESET)
+#define M25AA_CS_HIGH()             HAL_GPIO_WritePin(M25AA_CS_GPIO_Port, M25AA_CS_Pin, GPIO_PIN_SET)
 
-#define M25AA_CS_LOW()              HAL_GPIO_WritePin(M25AA_SS_GPIO_Port, M25AA_SS_Pin, GPIO_PIN_RESET);
-#define M25AA_CS_HIGH()             HAL_GPIO_WritePin(M25AA_SS_GPIO_Port, M25AA_SS_Pin, GPIO_PIN_SET);
+#define HC598_CS_LOW()              HAL_GPIO_WritePin(HC598_CS_GPIO_Port, HC598_CS_Pin, GPIO_PIN_RESET)
+#define HC598_CS_HIGH()             HAL_GPIO_WritePin(HC598_CS_GPIO_Port, HC598_CS_Pin, GPIO_PIN_SET)
+#define HC598_LAT_LOW()             HAL_GPIO_WritePin(HC598_LAT_GPIO_Port, HC598_LAT_Pin, GPIO_PIN_RESET)
+#define HC598_LAT_HIGH()            HAL_GPIO_WritePin(HC598_LAT_GPIO_Port, HC598_LAT_Pin, GPIO_PIN_SET)
+#define HC598_CTRL_LOW()            HAL_GPIO_WritePin(HC598_CTRL_GPIO_Port, HC598_CTRL_Pin, GPIO_PIN_RESET)
+#define HC598_CTRL_HIGH()           HAL_GPIO_WritePin(HC598_CTRL_GPIO_Port, HC598_CTRL_Pin, GPIO_PIN_SET)
+
+
+#define L6470_CS_LOW()              HAL_GPIO_WritePin(L6470_CS_GPIO_Port, L6470_CS_Pin, GPIO_PIN_RESET)
+#define L6470_CS_HIGH()             HAL_GPIO_WritePin(L6470_CS_GPIO_Port, L6470_CS_Pin, GPIO_PIN_SET)
+#define L6470_RST_LOW()             HAL_GPIO_WritePin(L6470_RST_GPIO_Port, L6470_RST_Pin, GPIO_PIN_RESET)
+#define L6470_RST_HIGH()            HAL_GPIO_WritePin(L6470_RST_GPIO_Port, L6470_RST_Pin, GPIO_PIN_SET)
+#define L6470_EMERGENCY_STOP()      L6470_RST_LOW(); while(1);
+
+#define DI0_STATE()                 HAL_GPIO_ReadPin(DI0_GPIO_Port, DI0_Pin)
+#define DI1_STATE()                 HAL_GPIO_ReadPin(DI1_GPIO_Port, DI1_Pin)
+#define DI2_STATE()                 HAL_GPIO_ReadPin(DI2_GPIO_Port, DI2_Pin)
+#define DI3_STATE()                 HAL_GPIO_ReadPin(DI3_GPIO_Port, DI3_Pin)
 
 
 extern ADC_HandleTypeDef    hadc;
@@ -91,6 +111,12 @@ __INLINE static void        BSP_MbPortTimerDisable(void);
 void                        TIM6_DAC1_IRQHandler(void);
 
 void                        BSP_PwmTimerInit(void);
+
+void                        BSP_SoundTimerInit(void);
+void                        BSP_SoundTimerStart(void);
+void                        BSP_SoundTimerStop(void);
+
+
 void                        BSP_SetAnalogOut(float volts);
 
 void                        BSP_SetDAC_Value(float dac);
@@ -101,7 +127,7 @@ void                        BSP_ReadDipSwitch(void);
 
 HAL_StatusTypeDef BSP_SpiTx(uint8_t* pData, uint8_t len);
 HAL_StatusTypeDef BSP_SpiRx(uint8_t* pData, uint8_t len);
-HAL_StatusTypeDef BSP_SpiRxTx(uint8_t* pData, uint8_t len);
+HAL_StatusTypeDef BSP_SpiTxRx(uint8_t* pDataTx, uint8_t* pDataRx, uint8_t len);
 
 
 

@@ -1,6 +1,11 @@
 #ifndef COMMON_H_INCLUDED
 #define COMMON_H_INCLUDED
 
+#include <stdint.h>
+#include <stdbool.h>
+#include <math.h>
+#include <stdlib.h>
+
 #ifndef NULL
     #define NULL ((void *)0)
 #endif

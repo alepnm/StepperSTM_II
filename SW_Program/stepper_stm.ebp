@@ -99,11 +99,16 @@
 		</Linker>
 		<Unit filename="Core\BSP\board\board.h" />
 		<Unit filename="Core\BSP\board\hw_typedefs.h" />
+		<Unit filename="Core\BSP\comp\L6470\l6470.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Core\BSP\comp\L6470\l6470.h" />
 		<Unit filename="Core\BSP\comp\M25AAx\M25AAxx.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Core\BSP\comp\M25AAx\M25AAxx.h" />
 		<Unit filename="Core\Inc\common.h" />
+		<Unit filename="Core\Inc\defs.h" />
 		<Unit filename="Core\Inc\main.h" />
 		<Unit filename="Core\Inc\stm32f0xx_hal_conf.h" />
 		<Unit filename="Core\Inc\stm32f0xx_it.h" />
@@ -168,6 +173,10 @@
 		<Unit filename="Core\libs\freemodbus\port\porttimer.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Core\libs\sound\sound.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Core\libs\sound\sound.h" />
 		<Unit filename="Core\libs\systick\systick.c">
 			<Option compilerVar="CC" />
 		</Unit>

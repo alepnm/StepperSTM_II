@@ -117,51 +117,6 @@
 #define     HR_MBSTOPBITS               ( 4u )      // 0x0130 Stopbitai
 
 
-
-/* DEFAULTS */
-#define     MB_PORT_DEF                 ( 0u )
-
-#define     MBADDR_DEF                  ( 10u )     //0x0A
-#define     MBPARITY_DEF                MB_PAR_NONE
-#define     MBBAURATE_DEF               ( 3u )      // bodreito indeksas lenteleje ( 3->19200 )
-#define     MBSTOPBITS_DEF              ( 1u )
-#define     MBWORDLENGHT_DEF            ( 8u )
-#define     SOUND_LEVEL_DEF             SND_OFF
-#define     WDT_FUNC_DEF                DISABLE
-
-#define     RPM_MIN_DEF                 ( 10u )     // minimalus sukimosi greitis (RPM)
-#define     RPM_MAX_DEF                 ( 200u )    // maksimalus sukimosi greitis (RPM)
-#define     MICROSTEPS_DEF              ( 16u )     // mikrostepu
-#define     MIN_TRES_OCD_MA_DEF         ( 500u )    // minimali sroves reiksme, mA
-#define     MAX_TRES_OCD_MA_DEF         ( 4000u )   // maksimali sroves reiksme, mA
-#define     MAX_KVAL_VALUE_DEF          ( 60u )
-#define     MAX_KVAL_HOLD_VALUE_DEF     ( 20u )
-#define     HS_TO_VALUE_DEF             ( 10u )     // holo daviklio taimaut (sekundes)
-#define     TRANSMISSION_RATIO_DEF      ( 30u )     // variklio ir rotoriaus diametru santykis
-#define     OVH_TIMEOUT_DEF             ( 15u )     // sekundes
-
-#define     USERSET_STEPS_PER_REV_DEF   ( 200u )    //
-#define     USERSET_KVAL_RUN_PROC_DEF   ( 24u )     // %
-#define     USERSET_KVAL_ACC_PROC_DEF   ( 20u )     // %
-#define     USERSET_KVAL_DEC_PROC_DEF   ( 16u )     // %
-#define     USERSET_KVAL_HOLD_PROC_DEF  ( 5u )      // %
-#define     USERSET_TRES_OCD_MA_DEF     ( 3000u )   // mA
-#define     USERSET_TRES_STALL_MA_DEF   ( 2000u )   // mA
-#define     USERSET_SPEED_ACC_DEF       ( 100u )    // steps/s^2
-#define     USERSET_SPEED_DEC_DEF       ( 100u )    // steps/s^2
-
-
-#define     SCROLL_RPM_DEF              ( 20u )     // RPM
-#define     SCROLL_OFF_CYCLE_TIME_DEF   ( 300u )    // sekundes
-#define     SCROLL_ON_CYCLE_TIME_DEF    ( 30u )     // sekundes
-#define     SCROLL_SYNC_DEF             ( 0u )
-
-
-/* kiti defainai */
-#define		TESTMODE_KEY				( 0x4949 )
-#define     SERVICEMODE_KEY             ( 0x26AA )
-
-
 /* extern data */
 extern UCHAR    ucDiscInputBuf[];
 extern UCHAR    ucCoilBuf[];

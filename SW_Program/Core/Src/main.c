@@ -45,6 +45,8 @@
 #include "mb.h"
 #include "user_mb_app.h"
 #include "M25AAxx.h"
+#include "l6470.h"
+#include "sound.h"
 
 #define UNIT_GROUP          0x04
 #define UNIT_SUBGROUP       0x01
@@ -67,11 +69,11 @@ IWDG_HandleTypeDef hiwdg;
 
 SPI_HandleTypeDef hspi1;
 
-TIM_HandleTypeDef htim6;        //  Modbus Timer
-TIM_HandleTypeDef htim14;       //  Delay Timer
-TIM_HandleTypeDef htim15;       //
-TIM_HandleTypeDef htim16;       //  Beeper Timer
-TIM_HandleTypeDef htim17;       //  PWM timer
+TIM_HandleTypeDef htim6;
+TIM_HandleTypeDef htim14;
+TIM_HandleTypeDef htim15;
+TIM_HandleTypeDef htim16;
+TIM_HandleTypeDef htim17;
 
 UART_HandleTypeDef huart1;
 
@@ -87,6 +89,11 @@ MbPortParams_TypeDef MbPortParams = {
     .StopBits = { .pmbus = &usRegHoldingBuf[HR_MBSTOPBITS], .cvalue = MBSTOPBITS_DEF },
     .DataBits  = { .pmbus = NULL, .cvalue = MBWORDLENGHT_DEF }
 };
+
+static uint32_t timestamp = 0;
+static uint8_t uStepRegisterValue = 0;
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,13 +113,18 @@ static void MX_USART1_UART_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
+
+
+
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
 static void SystemDataInit(void);
 static void MbDataInit(void);
 static void EEDataRestore(void);
+static void SystemDataUpdate(void);
 static void MbDataUpdate(void);
-static void ReadDipSwitch(void);
+static void DipSwitchDataUpdate(void);
+static void MotorConfig( const struct MotorParamSet* preset );
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -129,7 +141,6 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
     static uint32_t delay = 0;
-    uint32_t timestamp = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -169,9 +180,7 @@ int main(void)
 
     UserTimersInit();
 
-    ReadDipSwitch();
-
-
+    BSP_ReadDipSwitch();
 
 
 #ifdef MODBUS_ENABLE
@@ -189,6 +198,11 @@ int main(void)
         SET_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS );
         Error_Handler();
     }
+
+    SoundInit( true );
+
+    L6470_Init();
+
 #endif
 
   /* USER CODE END 2 */
@@ -203,9 +217,13 @@ int main(void)
 
             delay = timestamp + 20;
 
+            BSP_ReadDipSwitch();
+
+            SystemDataUpdate();
+
             MbDataUpdate();
 
-            ReadDipSwitch();
+
       }
   /* USER CODE END WHILE */
 
@@ -682,26 +700,26 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, RELAY_Pin|PWRON_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, L6470_RST_Pin|STATUS_LED_Pin|FAULT_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, L6470_SS_Pin|M25AA_SS_Pin|HC165_SS_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, L6470_CS_Pin|M25AA_CS_Pin|HC598_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(HCCTRL_GPIO_Port, HCCTRL_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(HC598_CTRL_GPIO_Port, HC598_CTRL_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOF, HC165_LATCH_Pin|COOLER_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOF, HC598_LAT_Pin|COOLER_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : RELAY_Pin */
-  GPIO_InitStruct.Pin = RELAY_Pin;
+  /*Configure GPIO pins : RELAY_Pin PWRON_Pin */
+  GPIO_InitStruct.Pin = RELAY_Pin|PWRON_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RELAY_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : DI3_Pin */
   GPIO_InitStruct.Pin = DI3_Pin;
@@ -728,8 +746,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : L6470_SS_Pin M25AA_SS_Pin HC165_SS_Pin */
-  GPIO_InitStruct.Pin = L6470_SS_Pin|M25AA_SS_Pin|HC165_SS_Pin;
+  /*Configure GPIO pins : L6470_CS_Pin M25AA_CS_Pin HC598_CS_Pin */
+  GPIO_InitStruct.Pin = L6470_CS_Pin|M25AA_CS_Pin|HC598_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -743,15 +761,15 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF0_MCO;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : HCCTRL_Pin */
-  GPIO_InitStruct.Pin = HCCTRL_Pin;
+  /*Configure GPIO pin : HC598_CTRL_Pin */
+  GPIO_InitStruct.Pin = HC598_CTRL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(HCCTRL_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(HC598_CTRL_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : HC165_LATCH_Pin COOLER_Pin */
-  GPIO_InitStruct.Pin = HC165_LATCH_Pin|COOLER_Pin;
+  /*Configure GPIO pins : HC598_LAT_Pin COOLER_Pin */
+  GPIO_InitStruct.Pin = HC598_LAT_Pin|COOLER_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -766,11 +784,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 /*  */
 static void SystemDataInit(void){
-
-    STATUS_LED_OFF();
-    FAULT_LED_OFF();
-    COOLER_OFF();
-    RELAY_OFF();
 
     EEDataRestore();
 
@@ -811,6 +824,8 @@ static void SystemDataInit(void){
 /*  */
 static void MbDataInit(void){
 
+    __enter_critical();
+
     *MbPortParams.MbAddr.pmbus = MbPortParams.MbAddr.cvalue;
     *MbPortParams.Baudrate.pmbus = MbPortParams.Baudrate.cvalue;
     *MbPortParams.Parity.pmbus = MbPortParams.Parity.cvalue;
@@ -821,6 +836,8 @@ static void MbDataInit(void){
     uint32_t wtime = GetWTime();
     usRegInputBuf[IR_WTIMEHI] = LO16(wtime);
     usRegInputBuf[IR_WTIMELO] = HI16(wtime);
+
+    __exit_critical();
 }
 
 /*  */
@@ -830,24 +847,24 @@ static void EEDataRestore(void){
 }
 
 
-static void MbDataUpdate(void){
+/*  */
+static void SystemDataUpdate(void){
 
-    uint32_t wtime = GetWTime();
+    __enter_critical();
 
+    DipSwitchDataUpdate();
 
-    usRegInputBuf[IR_WTIMEHI] = LO16(wtime);
-    usRegInputBuf[IR_WTIMELO] = HI16(wtime);
-
+    __exit_critical();
 }
 
 
 /*  */
-static void ReadDipSwitch(void) {
-    static uint8_t ldipsw;
+static void MbDataUpdate(void){
 
-    BSP_ReadDipSwitch();
+    usRegInputBuf[IR_WTIMEHI] = LO16(timestamp);
+    usRegInputBuf[IR_WTIMELO] = HI16(timestamp);
 
-    /* issaugojam nuskaitytus parametrus modbus registre */
+
     xMbSetDInput( DI_SW1_STATE, SMC_Control.DipSwitch.Data & 0x01 );
     xMbSetDInput( DI_SW2_STATE, SMC_Control.DipSwitch.Data>>1 & 0x01 );
     xMbSetDInput( DI_SW3_STATE, SMC_Control.DipSwitch.Data>>2 & 0x01 );
@@ -857,10 +874,25 @@ static void ReadDipSwitch(void) {
     xMbSetDInput( DI_SW7_STATE, SMC_Control.DipSwitch.Data>>6 & 0x01 );
     xMbSetDInput( DI_SW8_STATE, SMC_Control.DipSwitch.Data>>7 & 0x01 );
 
+
+    /* skaitom skaitmeninius iejimus */
+    xMbSetDInput( DI_DI0_STATE, DI0_STATE() );
+    xMbSetDInput( DI_DI1_STATE, DI1_STATE() );
+    xMbSetDInput( DI_DI2_STATE, DI2_STATE() );
+    xMbSetDInput( DI_DI3_STATE, DI3_STATE() );
+
+}
+
+
+/*  */
+static void DipSwitchDataUpdate(void) {
+
+    static uint8_t ldipsw;
+
     uint8_t dipsw = SMC_Control.DipSwitch.Data^0xFF;    // invertuojam
 
     if( dipsw != ldipsw ) {
-        //SoundStart(1);
+        SoundStart(1);
         ldipsw = dipsw;
     }
 
@@ -870,9 +902,37 @@ static void ReadDipSwitch(void) {
 
     SMC_Control.DipSwitch.Option.Scrolling = ( dipsw>>4 & 0x01 );
     SMC_Control.DipSwitch.Option.HallSensor = ( dipsw>>5 & 0x01 );
-    //SMC_Control.ControlMode = ( dipsw>>6 & 0x03 );
+    SMC_Control.ControlMode = ( dipsw>>6 & 0x03 );
 }
 
+
+/* Draiverio konfiguravimas aktyviam presetui
+*/
+static void MotorConfig( const struct MotorParamSet* preset ) {
+
+    __enter_critical();
+
+    /* L6470 registru inicializavimas */
+    L6470_setMicroSteps( uStepRegisterValue );
+
+    SetParam( REG_KVAL_RUN, PROC_8BIT(preset->Kval.RunValue) );
+    SetParam( REG_KVAL_ACC, PROC_8BIT(preset->Kval.AccValue) );
+    SetParam( REG_KVAL_DEC, PROC_8BIT(preset->Kval.DecValue) );
+    SetParam( REG_KVAL_HOLD, PROC_8BIT(preset->Kval.HoldValue) );
+
+    L6470_setMinSpeed( ConvertRpmToStepsPerSec(RPM_MIN_DEF) );
+    L6470_setMaxSpeed( ConvertRpmToStepsPerSec(usRegInputBuf[IR_MAX_RPM]) );
+
+    L6470_setThresholdSpeed( ConvertRpmToStepsPerSec(300) );
+
+    L6470_setAcc( preset->Speed.Acceleration );
+    L6470_setDec( preset->Speed.Deceleration );
+
+    L6470_setOverCurrent( preset->Treshold.OcdValue );
+    L6470_setStallCurrent( preset->Treshold.StallValue );
+
+    __exit_critical();
+}
 
 /* USER CODE END 4 */
 

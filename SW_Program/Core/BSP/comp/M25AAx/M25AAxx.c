@@ -42,7 +42,7 @@
 
 /* ****************************    GLOBALS     ***************************** */
 /* ****************************    PRIVATES    ***************************** */
-RESULT_TypeDef result = RES_OK;
+static eRESULT_TypeDef result = RES_OK;
 /* *************************** LOCAL FUNCTIONS ***************************** */
 static uint8_t  Read( uint8_t addr, uint8_t *buffer, int len );
 static uint8_t  Write( uint8_t addr, uint8_t* buffer, uint8_t len );
@@ -50,8 +50,8 @@ static uint8_t  WriteEnable( void );
 static uint8_t  WriteDisable( void );
 static bool     GetWriteFlag( );
 
-static uint8_t PullStatusRegister( uint8_t* status );
-static uint8_t PushStatusRegister( uint8_t* status );
+static uint8_t  PullStatusRegister( uint8_t* status );
+static uint8_t  PushStatusRegister( uint8_t* status );
 
 
 

@@ -1,10 +1,14 @@
 
 #include "board.h"
 #include "user_mb_app.h"
+#include "sound.h"
 
 
 UART_HandleTypeDef* ports[] = {&huart1, NULL, NULL};
+
 static const uint32_t baudrates[6u] = {2400u, 4800u, 9600u, 19200u, 38400u, 57600u};
+
+
 
 /* Functions prototypes */
 
@@ -13,7 +17,24 @@ static const uint32_t baudrates[6u] = {2400u, 4800u, 9600u, 19200u, 38400u, 5760
 /*  */
 void BSP_HW_Init(void) {
 
+    M25AA_CS_HIGH();
 
+    HC598_LAT_HIGH();
+    HC598_CTRL_HIGH();
+    HC598_CS_HIGH();
+
+    L6470_CS_HIGH();
+    L6470_RST_HIGH();
+
+    STATUS_LED_OFF();
+    FAULT_LED_OFF();
+    COOLER_OFF();
+    RELAY_OFF();
+
+        /* MCU periferijos inicializavimas */
+    while(HAL_ADCEx_Calibration_Start(&hadc) != HAL_OK);
+
+    (void)HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
 
     BSP_PwmTimerInit();
 
@@ -25,21 +46,7 @@ void BSP_Delay(uint32_t delay) {
 }
 
 
-/*****************************************************************************************
-* Function Name: UartConfig
-******************************************************************************************
-* Summary:
-*  Si funkcija konfiguruoja UART nustatymus. Patikrina parametra, ar jie yra leistini
-*  ar ne. Jai yra klaidingu parametru, jie uzkeiciami defaultiniais
-*
-* Parametrai:
-*   uint32_t    baudrate :  (uint32_t) baudraitas is standartiniu (4800 - 115200)
-*   uint8_t     parity  :   (uint32_t) UART_PARITY_NONE/UART_PARITY_EVEN/UART_PARITY_ODD
-*   uint8_t     stopbits :  (uint32_t) UART_STOPBITS_1/UART_STOPBITS_1_5/UART_STOPBITS_2
-*               databits :  (uint32_t) 8/9
-*
-* Grazina: Statusa HAL_StatusTypeDef
-*****************************************************************************************/
+/*  */
 HAL_StatusTypeDef BSP_UartConfig( uint8_t ucPORT, uint32_t ulBaudRate, uint8_t ucDataBits, uint8_t eParity ) {
 
     if( CheckBaudrateValue( ulBaudRate ) == HAL_ERROR ) {
@@ -53,7 +60,6 @@ HAL_StatusTypeDef BSP_UartConfig( uint8_t ucPORT, uint32_t ulBaudRate, uint8_t u
 
     switch (ucDataBits) {
     case 9:
-        //MbPortUART->Init.WordLength = UART_WORDLENGTH_9B;
         ports[ucPORT]->Init.WordLength = UART_WORDLENGTH_9B;
         break;
     default:
@@ -78,16 +84,7 @@ HAL_StatusTypeDef BSP_UartConfig( uint8_t ucPORT, uint32_t ulBaudRate, uint8_t u
 }
 
 
-/*******************************************************************************
-* Function Name: UartStart
-********************************************************************************
-* Summary: Funkcija startuoja UART irengini.
-*
-* Parametrai: pointeris i UART objekta UART_HandleTypeDef*
-*
-* Grazina: Statusa HAL_StatusTypeDef
-*
-*******************************************************************************/
+/*  */
 HAL_StatusTypeDef BSP_UartStart( uint8_t ucPORT ) {
 
     if(ports[ucPORT] == NULL) return HAL_ERROR;
@@ -106,15 +103,7 @@ HAL_StatusTypeDef BSP_UartStart( uint8_t ucPORT ) {
 }
 
 
-/*****************************************************************************************
-* Function Name: UartStop
-******************************************************************************************
-* Summary: Si funkcija stabdo UART moduli.
-*
-* Parametrai: pointeris i UART objekta UART_HandleTypeDef*.
-*
-* Grazina: Statusa HAL_StatusTypeDef
-*****************************************************************************************/
+/*  */
 HAL_StatusTypeDef BSP_UartStop( uint8_t ucPORT ) {
 
     if(ports[ucPORT] == NULL) return HAL_ERROR;
@@ -204,13 +193,13 @@ void BSP_UART_IRQ_Handler(USART_TypeDef * usart) {
         if( (__HAL_UART_GET_IT(ports[MbPortParams.Uart], UART_IT_RXNE) != RESET) && (__HAL_UART_GET_IT_SOURCE(ports[MbPortParams.Uart], UART_IT_RXNE) != RESET) ) {
 
             //prvvUARTRxISR( );
-            pxMBFrameCBByteReceived();
+            (void)pxMBFrameCBByteReceived();
         }
 
         if( (__HAL_UART_GET_IT(ports[MbPortParams.Uart], UART_IT_TXE) != RESET) && (__HAL_UART_GET_IT_SOURCE(ports[MbPortParams.Uart], UART_IT_TXE) != RESET) ) {
 
             //prvvUARTTxReadyISR( );
-            pxMBFrameCBTransmitterEmpty();
+            (void)pxMBFrameCBTransmitterEmpty();
         }
     }
 }
@@ -232,7 +221,7 @@ void BSP_MbPortTimerInit(uint16_t period) {
         _Error_Handler(__FILE__, __LINE__);
     }
 
-    //__HAL_TIM_ENABLE_IT(pModbusTimer, TIM_IT_UPDATE);
+    //__HAL_TIM_ENABLE_IT(&htim6, TIM_IT_UPDATE);
 }
 
 
@@ -243,9 +232,7 @@ void TIM6_DAC1_IRQHandler(void) {
 
         __HAL_TIM_CLEAR_IT(&htim6, TIM_IT_UPDATE);
 
-        ( void )pxMBPortCBTimerExpired( );
-
-        //HAL_GPIO_WritePin(COOLER_GPIO_Port, COOLER_Pin, GPIO_PIN_RESET);
+        (void)pxMBPortCBTimerExpired( );
     }
 }
 
@@ -290,6 +277,54 @@ void BSP_PwmTimerInit(void) {
 }
 
 
+
+/*  */
+void BSP_SoundTimerInit(void) {
+
+    TIM_OC_InitTypeDef sConfigOC = {
+        .OCMode = TIM_OCMODE_PWM1,
+        .OCPolarity = TIM_OCPOLARITY_HIGH,
+        .OCNPolarity = TIM_OCNPOLARITY_HIGH,
+        .OCFastMode = TIM_OCFAST_DISABLE,
+        .OCIdleState = TIM_OCIDLESTATE_RESET,
+        .OCNIdleState = TIM_OCNIDLESTATE_RESET
+    };
+
+    htim16.Init.Prescaler = (SystemCoreClock / 1000000) - 1;
+    htim16.Init.CounterMode = TIM_COUNTERMODE_UP;
+    htim16.Init.Period = (1000000 / Sounder.freq) - 1;
+    htim16.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+    htim16.Init.RepetitionCounter = 0;
+    htim16.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+
+    if (HAL_TIM_Base_Init(&htim16) != HAL_OK){
+            Error_Handler();
+    }
+
+    sConfigOC.Pulse = (htim16.Init.Period * Sounder.volume) / 100;
+
+    if (HAL_TIM_PWM_ConfigChannel(&htim16, &sConfigOC, TIM_CHANNEL_1) != HAL_OK){
+            Error_Handler();
+    }
+}
+
+/* */
+void BSP_SoundTimerStart(void) {
+    if (HAL_TIM_PWM_Start(&htim16, TIM_CHANNEL_1) != HAL_OK) {
+        Error_Handler();
+    }
+}
+
+/*  */
+void BSP_SoundTimerStop(void) {
+    if (HAL_TIM_PWM_Stop(&htim16, TIM_CHANNEL_1) != HAL_OK) {
+        Error_Handler();
+    }
+}
+
+
+
+
 /* Formuoja 0-10V isejime itampa, atitinkamos parametrui reiksmes
 Parametrai: volts -> 0-10 (Voltai)
 */
@@ -319,20 +354,19 @@ void BSP_ReadDipSwitch(void) {
 
     uint8_t delay = 10;
 
-    HAL_GPIO_WritePin(HC165_LATCH_GPIO_Port, HC165_LATCH_Pin, GPIO_PIN_RESET);
+    HC598_LAT_LOW();
     while(delay--);
     delay = 10;
-    HAL_GPIO_WritePin(HC165_LATCH_GPIO_Port, HC165_LATCH_Pin, GPIO_PIN_SET);
+    HC598_LAT_HIGH();
 
-    HAL_GPIO_WritePin(HCCTRL_GPIO_Port, HCCTRL_Pin, GPIO_PIN_RESET);
+    HC598_CTRL_LOW();
     while(delay--);
     delay = 10;
-    HAL_GPIO_WritePin(HCCTRL_GPIO_Port, HCCTRL_Pin, GPIO_PIN_SET);
+    HC598_CTRL_HIGH();
 
-    HAL_GPIO_WritePin(HC165_SS_GPIO_Port, HC165_SS_Pin, GPIO_PIN_RESET);
-    //(void)HAL_SPI_Receive(&hspi1, &(SMC_Control.DipSwitch.Data), 1, 10);
+    HC598_CS_LOW();
     BSP_SpiRx(&(SMC_Control.DipSwitch.Data), 1);
-    HAL_GPIO_WritePin(HC165_SS_GPIO_Port, HC165_SS_Pin, GPIO_PIN_SET);
+    HC598_CS_HIGH();
 }
 
 
@@ -360,7 +394,12 @@ HAL_StatusTypeDef BSP_SpiRx(uint8_t* pData, uint8_t len) {
 }
 
 /*  */
-HAL_StatusTypeDef BSP_SpiRxTx(uint8_t* pData, uint8_t len) {
+HAL_StatusTypeDef BSP_SpiTxRx(uint8_t* pDataTx, uint8_t* pDataRx, uint8_t len) {
+
+    HAL_StatusTypeDef result = HAL_OK;
+
+    if( (result = HAL_SPI_TransmitReceive(&hspi1, pDataTx, pDataRx, len, 10) ) != HAL_OK ) return result;
+    while( hspi1.State == HAL_SPI_STATE_BUSY );
 
     return HAL_OK;
 }
