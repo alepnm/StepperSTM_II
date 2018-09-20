@@ -40,7 +40,7 @@
 /* Defines, macro, typedefs --------------------------------------------------*/
 
 
-typedef enum { LOW = 1, MID = 5, HIGH = 20 } SND_VolTypeDef;  //procentais
+typedef enum { SND_OFF = 0, SND_LOW = 1, SND_MID = 5, SND_HIGH = 20 } SND_VolTypeDef;  //procentais
 
 
 typedef struct {

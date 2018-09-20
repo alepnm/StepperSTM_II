@@ -97,8 +97,15 @@
 			<Add option="-eb_start_files" />
 			<Add option="-lm" />
 		</Linker>
+		<Unit filename="Core\BSP\board\board.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Core\BSP\board\board.h" />
 		<Unit filename="Core\BSP\board\hw_typedefs.h" />
+		<Unit filename="Core\BSP\comp\IIC_EEPROM\iic_eeprom.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Core\BSP\comp\IIC_EEPROM\iic_eeprom.h" />
 		<Unit filename="Core\BSP\comp\L6470\l6470.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -181,9 +188,6 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Core\libs\systick\systick.h" />
-		<Unit filename="Core\Src\board.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="Core\Src\main.c">
 			<Option compilerVar="CC" />
 		</Unit>

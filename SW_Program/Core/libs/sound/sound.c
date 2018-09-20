@@ -44,7 +44,7 @@ extern TIM_HandleTypeDef* pBeeperTimer;
 SND_HandleTypeDef Sounder = {
     .tone = 1,
     .freq = 1000,
-    .volume = LOW,
+    .volume = SND_LOW,
     .enable = false
 };
 
@@ -57,7 +57,7 @@ void SoundInit( bool ena ) {
 
     Sounder.enable = ena;
 
-    Sounder.volume = LOW;
+    Sounder.volume = SND_LOW;
     Sounder.freq = 1000;
 //    Sounder.tone = 1;
 

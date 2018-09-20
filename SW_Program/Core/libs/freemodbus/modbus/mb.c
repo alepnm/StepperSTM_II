@@ -417,7 +417,7 @@ eMBPoll( void )
     return MB_ENOERR;
 }
 
-
+/*  */
 uint8_t GetCurrentMbAddress( void ){
     return ucMBAddress;
 }

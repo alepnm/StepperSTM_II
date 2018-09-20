@@ -1,9 +1,7 @@
 /*
 
 */
-#include <stdlib.h>
 #include "M25AAxx.h"
-#include "board.h"
 
 
 /* **************************** DEFINES, MACRO ***************************** */
@@ -61,7 +59,7 @@ static uint8_t  spi_receive(uint8_t* pData, uint8_t len);
 /* **************************** IMPLEMENTATION ***************************** */
 
 /* Skaitymas UID */
-bool M25AAxx_ReadUID( unsigned char* buffer) {
+uint8_t M25AAxx_ReadUID( unsigned char* buffer) {
 
     if( buffer == NULL ) return 1;
 
@@ -129,17 +127,17 @@ uint32_t M25AAxx_ReadDWord(uint8_t addr) {
 }
 
 /* Skaitymas i buferi N baitu */
-bool M25AAxx_Read( uint8_t addr, uint8_t* data, uint8_t len ) {
-    return ( Read( addr, data, len ) != HAL_OK ) ? true : false;
+uint8_t M25AAxx_Read( uint8_t addr, uint8_t* data, uint8_t len ) {
+    return ( Read( addr, data, len ) != 0 ) ? 1 : 0;
 }
 
 /* Irasymas Byte */
-bool M25AAxx_WriteByte( uint8_t addr, uint8_t value ) {
-    return ( Write( addr, &value, 1 ) != HAL_OK ) ? true : false;
+uint8_t M25AAxx_WriteByte( uint8_t addr, uint8_t value ) {
+    return ( Write( addr, &value, 1 ) != 0 ) ? 1 : 0;
 }
 
 /* Irasymas Word */
-bool M25AAxx_WriteWord( uint8_t addr, uint16_t value ) {
+uint8_t M25AAxx_WriteWord( uint8_t addr, uint16_t value ) {
 
     union {
         uint8_t data[2];
@@ -148,11 +146,11 @@ bool M25AAxx_WriteWord( uint8_t addr, uint16_t value ) {
 
     reg.intval = value;
 
-    return ( Write( addr, reg.data, 2 ) != HAL_OK ) ? true : false;
+    return ( Write( addr, reg.data, 2 ) != 0 ) ? 1 : 0;
 }
 
 /* Irasymas Double Word */
-bool M25AAxx_WriteDWord( uint8_t addr, uint32_t value ) {
+uint8_t M25AAxx_WriteDWord( uint8_t addr, uint32_t value ) {
 
     union {
         uint8_t data[4];
@@ -161,13 +159,13 @@ bool M25AAxx_WriteDWord( uint8_t addr, uint32_t value ) {
 
     reg.intval = value;
 
-    return ( Write( addr, reg.data, 4 ) != HAL_OK ) ? true : false;
+    return ( Write( addr, reg.data, 4 ) != 0 ) ? 1 : 0;
 }
 
 /* Irasymas is buferio N baitu */
-bool M25AAxx_Write(uint8_t addr, uint8_t* data, uint8_t len) {
+uint8_t M25AAxx_Write(uint8_t addr, uint8_t* data, uint8_t len) {
 
-    return ( Write( addr, data, len ) != HAL_OK ) ? true : false;
+    return ( Write( addr, data, len ) != 0 ) ? 1 : 0;
 }
 
 
@@ -195,6 +193,37 @@ uint8_t M25AAxx_Clear(void) {
     return result;
 }
 
+/*  */
+uint8_t M25AAxx_BlockProtect(uint8_t block){
+
+    if(block == 0||block > 3) return 1;
+
+    uint8_t status = 0;
+
+    PullStatusRegister(&status);
+
+    status |= (block<<2);
+
+    PushStatusRegister(&status);
+
+    return 0;
+}
+
+/*  */
+uint8_t M25AAxx_BlockUnProtect(uint8_t block){
+
+    if(block == 0||block > 3) return 1;
+
+    uint8_t status = 0;
+
+    PullStatusRegister(&status);
+
+    status &= ~(block<<2);
+
+    PushStatusRegister(&status);
+
+    return 0;
+}
 
 
 /* Skaitom Status Registra */
@@ -231,7 +260,6 @@ static uint8_t PushStatusRegister( uint8_t* status ) {
 
     return result;
 }
-
 
 /*  */
 static bool GetWriteFlag( ) {
@@ -358,9 +386,9 @@ static uint8_t WriteDisable() {
 
 
 inline static uint8_t spi_send(uint8_t* pData, uint8_t len) {
-    return (uint8_t)BSP_SpiTx(pData, len);
+    return (uint8_t)BSP_M25AAxx_SPI_Transmit(pData, len);
 }
 
 inline static uint8_t spi_receive(uint8_t* pData, uint8_t len) {
-    return (uint8_t)BSP_SpiRx(pData, len);
+    return (uint8_t)BSP_M25AAxx_SPI_Receive(pData, len);
 }

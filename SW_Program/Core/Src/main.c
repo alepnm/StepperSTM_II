@@ -41,7 +41,7 @@
 #include "stm32f0xx_hal.h"
 
 /* USER CODE BEGIN Includes */
-#include <string.h>
+#include "common.h"
 #include "mb.h"
 #include "user_mb_app.h"
 #include "M25AAxx.h"
@@ -83,6 +83,7 @@ SmcHandle_TypeDef SMC_Control;
 
 MbPortParams_TypeDef MbPortParams = {
     .Uart = MB_PORT_DEF,
+    .ModbusActive = false,
     .MbAddr = { .pmbus = &usRegHoldingBuf[HR_MBADDR], .cvalue = MBADDR_DEF},
     .Baudrate = { .pmbus = &usRegHoldingBuf[HR_MBBAUDRATE], .cvalue = MBBAURATE_DEF },
     .Parity = { .pmbus = &usRegHoldingBuf[HR_MBPARITY], .cvalue = MBPARITY_DEF },
@@ -91,8 +92,19 @@ MbPortParams_TypeDef MbPortParams = {
 };
 
 static uint32_t timestamp = 0;
-static uint8_t uStepRegisterValue = 0;
+static uint32_t wtime = 0;
 
+static uint8_t uStepRegisterValue = 0;
+static uint32_t OverheatStopTimer;
+
+static FlagStatus CoolerOnBit = RESET;
+static FlagStatus TestModeFlag = RESET;
+static FlagStatus SaveWTimeFlag = RESET;
+static FlagStatus SystemNeedReInit = RESET;
+static FlagStatus SystemNeedReBoot = RESET;
+static FlagStatus ReadAnalogsFlag = RESET;
+
+static const uint32_t baudrates[6u] = {2400u, 4800u, 9600u, 19200u, 38400u, 57600u};
 
 /* USER CODE END PV */
 
@@ -117,14 +129,35 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 
 /* USER CODE BEGIN PFP */
+HAL_StatusTypeDef   CheckBaudrateValue(uint32_t baudrate);
+HAL_StatusTypeDef   CheckBaudrateIndex( uint8_t idx );
+
+uint8_t             GetIndexByBaudrate( uint32_t baudrate );    // grazina bodreito indeksa
+uint32_t            GetBaudrateByIndex( uint8_t idx );  // grazina bodreita pagal jo indeksa
+
+uint8_t             GetCurrentBaudrateIndex( void );    // grazina aktyvaus bodreito indeksa
+uint8_t             GetCurrentParity( void );           // grazina aktyvu parity reiksme
+uint8_t             GetCurrentStopBits( void );
+uint8_t             GetCurrentDataBits( void );
+
+uint8_t             InverseBits(uint8_t data);
+
+
+
 /* Private function prototypes -----------------------------------------------*/
-static void SystemDataInit(void);
-static void MbDataInit(void);
-static void EEDataRestore(void);
-static void SystemDataUpdate(void);
-static void MbDataUpdate(void);
-static void DipSwitchDataUpdate(void);
-static void MotorConfig( const struct MotorParamSet* preset );
+static void     SystemDataInit(void);
+static void     MbDataInit(void);
+static void     EEDataRestore(void);
+static void     SystemDataUpdate(void);
+static void     MbDataUpdate(void);
+static void     DipSwitchDataUpdate(void);
+static void     MotorConfig( const struct MotorParamSet* preset );
+static void     CoolerController(void);
+static void     CoolerOnByTime(uint8_t sec);
+static void     RelayController(void);
+static void     LedsController(void);
+static void     L6470_HardReset(void);
+static void     SystemReset(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -174,6 +207,8 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+    wtime = GetWTime();
+
     BSP_HW_Init();
 
     SystemDataInit();
@@ -182,28 +217,26 @@ int main(void)
 
     BSP_ReadDipSwitch();
 
-
 #ifdef MODBUS_ENABLE
-    if( eMBInit( MB_RTU, (UCHAR)(*MbPortParams.MbAddr.pmbus), MbPortParams.Uart, (ULONG)( GetBaudrateByIndex(*MbPortParams.Baudrate.pmbus) ), (eMBParity)(*MbPortParams.Parity.pmbus) ) != MB_ENOERR ){
-        SET_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS );
-        Error_Handler();
+    if( eMBInit( MB_RTU, (UCHAR)(*MbPortParams.MbAddr.pmbus), MbPortParams.Uart, (ULONG)( GetBaudrateByIndex(*MbPortParams.Baudrate.pmbus) ), (eMBParity)(*MbPortParams.Parity.pmbus) ) == MB_ENOERR ){
+        if( eMBEnable() == MB_ENOERR ){
+            if( eMBSetSlaveID( 123, TRUE, ucSlaveIdBuf, (MB_FUNC_OTHER_REP_SLAVEID_BUF - 4) ) == MB_ENOERR ){
+                MbPortParams.ModbusActive = true;
+            }
+        }
     }
 
-    if( eMBSetSlaveID( UNIT_GROUP, TRUE, ucSlaveIdBuf, (MB_FUNC_OTHER_REP_SLAVEID_BUF - 4) ) != MB_ENOERR ) {
+    if(MbPortParams.ModbusActive == false){
         SET_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS );
-        Error_Handler();
+        SMC_Control.SMC_State = FSM_STATE_FAULT;
     }
+#endif
 
-    if( eMBEnable() != MB_ENOERR ) {
-        SET_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS );
-        Error_Handler();
-    }
+    MbDataInit();
 
     SoundInit( true );
 
     L6470_Init();
-
-#endif
 
   /* USER CODE END 2 */
 
@@ -211,18 +244,24 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-      timestamp = GetTimestamp();
-
       if(delay < timestamp){
+
+            /* resetinam watchdog'a */
+            if( xMbGetCoil( CO_WDT_FUNC ) != RESET ){
+                (void)HAL_IWDG_Refresh(&hiwdg);
+            }
 
             delay = timestamp + 20;
 
             BSP_ReadDipSwitch();
 
+            BSP_ReadAnalogInputs();
+
             SystemDataUpdate();
 
             MbDataUpdate();
 
+            LedsController();
 
       }
   /* USER CODE END WHILE */
@@ -782,12 +821,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
 /*  */
 static void SystemDataInit(void){
 
     EEDataRestore();
-
-    SetWTime(123456789);
 
     SMC_Control.StrData.pHWVersion = ucSlaveIdBuf + 3;
     SMC_Control.StrData.pFWVersion = ucSlaveIdBuf + 6;
@@ -817,8 +855,6 @@ static void SystemDataInit(void){
     MbPortParams.Parity.cvalue = MBPARITY_DEF;
     MbPortParams.DataBits.cvalue = MBWORDLENGHT_DEF;
     MbPortParams.StopBits.cvalue = MBSTOPBITS_DEF;
-
-    MbDataInit();
 }
 
 /*  */
@@ -832,27 +868,228 @@ static void MbDataInit(void){
     *MbPortParams.DataBits.pmbus = MbPortParams.DataBits.cvalue;
     *MbPortParams.StopBits.pmbus = MbPortParams.StopBits.cvalue;
 
-
-    uint32_t wtime = GetWTime();
-    usRegInputBuf[IR_WTIMEHI] = LO16(wtime);
-    usRegInputBuf[IR_WTIMELO] = HI16(wtime);
-
     __exit_critical();
 }
 
 /*  */
-static void EEDataRestore(void){
+static void EEDataRestore(void) {
 
+    /* jai EEPROM ne inicializuotas, inicializuojam ji */
+    if( M25AAxx_ReadByte( EEADDR_INIT_BYTE ) != EE_INIT_BYTE ) {
+        M25AAxx_WriteByte( EEADR_MBADDR, MBADDR_DEF );
+        M25AAxx_WriteByte( EEADDR_MBBAUDRATE, MBBAURATE_DEF );
+        M25AAxx_WriteByte( EEADR_PARITY, MBPARITY_DEF );
+        M25AAxx_WriteByte( EEADR_STOPBITS, MBSTOPBITS_DEF );
 
+        M25AAxx_WriteByte( EEADR_WDT_FUNC, WDT_FUNC_DEF );
+
+        M25AAxx_WriteByte( EEADR_MICROSTEPS, MICROSTEPS_DEF );
+
+        M25AAxx_WriteByte( EEADR_HS_TO_VALUE, HS_TO_VALUE_DEF );
+
+        M25AAxx_WriteByte( EEADR_SOUND_LEVEL, SOUND_LEVEL_DEF );
+
+        M25AAxx_WriteByte( EEADR_SCROLL_RPM, SCROLL_RPM_DEF );
+        M25AAxx_WriteWord( EEADR_SCROLL_OFF_CYCLE_TIME, SCROLL_OFF_CYCLE_TIME_DEF );
+        M25AAxx_WriteWord( EEADR_SCROLL_ON_CYCLE_TIME, SCROLL_ON_CYCLE_TIME_DEF );
+        M25AAxx_WriteByte( EEADR_SCROLL_SYNC, SCROLL_SYNC_DEF );
+
+        M25AAxx_WriteByte( EEADR_USERSET_STEPS_PER_REV, USERSET_STEPS_PER_REV_DEF );
+
+        M25AAxx_WriteByte( EEADR_USERSET_KVAL_RUN, USERSET_KVAL_RUN_PROC_DEF );
+        M25AAxx_WriteByte( EEADR_USERSET_KVAL_ACC, USERSET_KVAL_ACC_PROC_DEF );
+        M25AAxx_WriteByte( EEADR_USERSET_KVAL_DEC, USERSET_KVAL_DEC_PROC_DEF );
+        M25AAxx_WriteByte( EEADR_USERSET_KVAL_HOLD, USERSET_KVAL_HOLD_PROC_DEF );
+
+        M25AAxx_WriteWord( EEADR_USERSET_TRES_OCD, USERSET_TRES_OCD_MA_DEF );
+        M25AAxx_WriteWord( EEADR_USERSET_TRES_STALL, USERSET_TRES_STALL_MA_DEF );
+
+        M25AAxx_WriteByte( EEADR_MIN_RPM, RPM_MIN_DEF );
+        M25AAxx_WriteByte( EEADR_MAX_RPM, RPM_MAX_DEF );
+
+        M25AAxx_WriteWord( EEADR_USERSET_SPEED_ACC, USERSET_SPEED_ACC_DEF );
+        M25AAxx_WriteWord( EEADR_USERSET_SPEED_DEC, USERSET_SPEED_DEC_DEF );
+
+        M25AAxx_WriteWord( EEADR_OVH_TIMEOUT, OVH_TIMEOUT_DEF );
+
+        M25AAxx_WriteByte( EEADR_TRANSMISSION_RATIO, TRANSMISSION_RATIO_DEF );
+
+        M25AAxx_WriteByte( EEADDR_INIT_BYTE, EE_INIT_BYTE );
+    }
+
+    usRegHoldingBuf[HR_MBADDR] = M25AAxx_ReadByte( EEADR_MBADDR );
+    usRegHoldingBuf[HR_MBBAUDRATE] = M25AAxx_ReadByte( EEADDR_MBBAUDRATE );
+    usRegHoldingBuf[HR_MBPARITY] = M25AAxx_ReadByte( EEADR_PARITY );
+    usRegHoldingBuf[HR_MBSTOPBITS] = M25AAxx_ReadByte( EEADR_STOPBITS );
+
+    xMbSetCoil( CO_WDT_FUNC, ( M25AAxx_ReadByte( EEADR_WDT_FUNC) == DISABLE ) ? DISABLE : 0x01 );
+
+    usRegHoldingBuf[HR_MICROSTEPS] = M25AAxx_ReadByte( EEADR_MICROSTEPS );
+
+    usRegHoldingBuf[HR_HS_TO_VALUE] = M25AAxx_ReadByte( EEADR_HS_TO_VALUE );
+
+    usRegHoldingBuf[HR_OVH_TIMEOUT] = M25AAxx_ReadWord( EEADR_OVH_TIMEOUT );
+
+    usRegHoldingBuf[HR_SOUND_LEVEL] = M25AAxx_ReadByte( EEADR_SOUND_LEVEL );
+
+    usRegHoldingBuf[HR_SCROLL_RPM] = M25AAxx_ReadByte( EEADR_SCROLL_RPM );
+    usRegHoldingBuf[HR_SCROLL_OFF_CYCLE_TIME] = M25AAxx_ReadWord( EEADR_SCROLL_OFF_CYCLE_TIME );
+    usRegHoldingBuf[HR_SCROLL_ON_CYCLE_TIME] = M25AAxx_ReadWord( EEADR_SCROLL_ON_CYCLE_TIME );
+    usRegHoldingBuf[HR_SCROLL_SYNC] = M25AAxx_ReadByte( EEADR_SCROLL_SYNC );
+
+    usRegHoldingBuf[HR_USERSET_STEPS_PER_REV] = M25AAxx_ReadByte( EEADR_USERSET_STEPS_PER_REV );
+
+    usRegHoldingBuf[HR_USERSET_KVAL_RUN] = M25AAxx_ReadByte( EEADR_USERSET_KVAL_RUN );
+    usRegHoldingBuf[HR_USERSET_KVAL_ACC] = M25AAxx_ReadByte( EEADR_USERSET_KVAL_ACC );
+    usRegHoldingBuf[HR_USERSET_KVAL_DEC] = M25AAxx_ReadByte( EEADR_USERSET_KVAL_DEC );
+    usRegHoldingBuf[HR_USERSET_KVAL_HOLD] = M25AAxx_ReadByte( EEADR_USERSET_KVAL_HOLD );
+
+    usRegHoldingBuf[HR_USERSET_TRES_OCD] = M25AAxx_ReadWord( EEADR_USERSET_TRES_OCD);
+    usRegHoldingBuf[HR_USERSET_TRES_STALL] = M25AAxx_ReadWord( EEADR_USERSET_TRES_STALL);
+
+    usRegHoldingBuf[HR_MIN_RPM] = M25AAxx_ReadByte( EEADR_MIN_RPM );
+    usRegHoldingBuf[HR_MAX_RPM] = M25AAxx_ReadByte( EEADR_MAX_RPM );
+
+    usRegHoldingBuf[HR_USERSET_SPEED_ACC] = M25AAxx_ReadWord( EEADR_USERSET_SPEED_ACC );
+    usRegHoldingBuf[HR_USERSET_SPEED_DEC] = M25AAxx_ReadWord( EEADR_USERSET_SPEED_DEC );
+
+    usRegHoldingBuf[HR_TRANSMISSION_RATIO] = M25AAxx_ReadByte( EEADR_TRANSMISSION_RATIO );
+
+    wtime = M25AAxx_ReadDWord(EEADR_WTIME);
+    SetWTime(wtime);
+
+    usRegInputBuf[IR_WTIMEHI] = HI16(wtime);
+    usRegInputBuf[IR_WTIMELO] = LO16(wtime);
 }
 
 
 /*  */
 static void SystemDataUpdate(void){
 
+    FlagStatus port_need_update = RESET;
+
     __enter_critical();
 
+    /* chekinam, ar nepasikeite porto parametrai; jai pasikeite - chekinam reiksme ir aktyvuojam porto rekonfiguracija.
+    Jai parametras neteisingas, nekeiciam ji */
+    if( GetCurrentMbAddress() != usRegHoldingBuf[HR_MBADDR] ){
+        if(usRegHoldingBuf[HR_MBADDR] > 247U){
+            usRegHoldingBuf[HR_MBADDR] = GetCurrentMbAddress();
+        }else{
+            M25AAxx_WriteByte( EEADR_MBADDR, (uint8_t)usRegHoldingBuf[HR_MBADDR] );
+            port_need_update = SET;
+        }
+    }
+
+    if( GetCurrentBaudrateIndex() != usRegHoldingBuf[HR_MBBAUDRATE] ){
+        if(usRegHoldingBuf[HR_MBBAUDRATE] > 5U){
+            usRegHoldingBuf[HR_MBBAUDRATE] = GetCurrentBaudrateIndex();
+        }else{
+            M25AAxx_WriteByte( EEADDR_MBBAUDRATE, (uint8_t)usRegHoldingBuf[HR_MBBAUDRATE] );
+            port_need_update = SET;
+        }
+    }
+
+    if( GetCurrentParity() != usRegHoldingBuf[HR_MBPARITY] ){
+        if(usRegHoldingBuf[HR_MBPARITY] > 2U){
+            usRegHoldingBuf[HR_MBPARITY] = GetCurrentParity();
+        }else{
+            M25AAxx_WriteByte( EEADR_PARITY, (uint8_t)usRegHoldingBuf[HR_MBPARITY] );
+            port_need_update = SET;
+        }
+    }
+
+    if( GetCurrentStopBits() != usRegHoldingBuf[HR_MBSTOPBITS] ){
+        if(usRegHoldingBuf[HR_MBSTOPBITS] == 0U || usRegHoldingBuf[HR_MBSTOPBITS] > 2U){
+            usRegHoldingBuf[HR_MBSTOPBITS] = GetCurrentStopBits();
+        }else{
+            M25AAxx_WriteByte( EEADR_STOPBITS, (uint8_t)usRegHoldingBuf[HR_MBSTOPBITS] );
+            port_need_update = SET;
+        }
+    }
+
+
+    /* restartojam porta su naujais parametrais, jai reikia */
+    if( port_need_update != RESET ){
+        (void)eMBDisable();
+        eMBInit( MB_RTU, (UCHAR)(usRegHoldingBuf[HR_MBADDR]), 0U, (ULONG)( GetBaudrateByIndex(usRegHoldingBuf[HR_MBBAUDRATE]) ), (eMBParity)(usRegHoldingBuf[HR_MBPARITY]) );
+        (void)eMBEnable();
+    }
+
+
+    /* kas 60s saugojam wtime */
+    if( SaveWTimeFlag != RESET ){
+        SaveWTimeFlag = RESET;
+        M25AAxx_WriteDWord( EEADR_WTIME, wtime );
+    }
+
+
+
+
+
+
+    FlagStatus bit = RESET;
+
+    /* daugiafunkcinis registras */
+    switch( usRegHoldingBuf[HR_MAGIC_REG] ) {
+    case 0x16AD:    // reinicializacija defaultais
+        usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
+        SystemNeedReInit = SET;
+        break;
+    case 0x1988:    // reboot
+        usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
+        SystemNeedReBoot = SET;
+        break;
+    case 0x2A14:    // ventiliatoriaus ijungimas/isjungimas
+        usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
+        bit = xMbGetCoil( CO_COOLER_ON );
+        xMbSetCoil( CO_COOLER_ON, !bit );
+        break;
+    case 0x2A15:    // reles ijungima/isjungimas
+        usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
+        bit = xMbGetCoil( CO_RELAY_ON );
+        xMbSetCoil( CO_RELAY_ON, !bit );
+        break;
+    case 0x8691:    // paleidziam/stabdom varikli i viena puse
+        bit = SET;
+    case 0x8692:    // paleidziam/stabdom varikli i kita puse
+        usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
+//        TestModeFlag = !TestModeFlag;
+//
+//        if(TestModeFlag == RESET){
+//            //L6470_softFree();
+//            L6470_run( SMC_Control.MotorData.RotDirSetting, ConvertRpmToStepsPerSec( (float)SMC_Control.MotorData.RotSpeedSetting ) );
+//        }else{
+//            L6470_run( bit, ConvertRpmToStepsPerSec( (float)60 ) );
+//        }
+        break;
+    case 0xABBA:    // istrinam WTIME
+        wtime = usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
+        SaveWTimeFlag = SET;
+        break;
+    default:
+        break;
+    }
+
+
     DipSwitchDataUpdate();
+
+
+    /* jai reikia, inicializuojames Defaultais */
+    if( SystemNeedReInit != RESET ){
+        M25AAxx_WriteByte( EEADDR_INIT_BYTE, 0xFF );
+        SystemNeedReInit = RESET;
+        SystemNeedReBoot = SET;
+    }
+
+    /* jai reikia, persikraunam */
+    if( SystemNeedReBoot != RESET ){
+
+        HAL_Delay(100);
+
+        SystemNeedReBoot = RESET;
+        SystemReset();
+    }
 
     __exit_critical();
 }
@@ -861,8 +1098,8 @@ static void SystemDataUpdate(void){
 /*  */
 static void MbDataUpdate(void){
 
-    usRegInputBuf[IR_WTIMEHI] = LO16(timestamp);
-    usRegInputBuf[IR_WTIMELO] = HI16(timestamp);
+    usRegInputBuf[IR_WTIMEHI] = LO16(wtime);
+    usRegInputBuf[IR_WTIMELO] = HI16(wtime);
 
 
     xMbSetDInput( DI_SW1_STATE, SMC_Control.DipSwitch.Data & 0x01 );
@@ -934,6 +1171,324 @@ static void MotorConfig( const struct MotorParamSet* preset ) {
     __exit_critical();
 }
 
+
+
+/* Ausintuvo hendleris
+Kuleris aktyvuojamas L6470 overheat signalu arba Modbus CO_COOLER_ON registru
+T >= 20ms, main
+*/
+static void CoolerController(void) {
+
+    /* jai draiverio perkaitimas, aktyvuojam kuleri, jai ne - pagal COOLER Modbus bituka */
+    if( READ_BIT( SMC_Control.MotorData.Status, STATUS_TH_WRN ) == RESET ) {
+
+        /* uztaisom perkaitimo apsaugos taimeri */
+        CoolerOnByTime( usRegHoldingBuf[HR_OVH_TIMEOUT] );
+
+    } else {
+
+        /* jai nustatytas kulerio MODBUS bitas */
+        if( xMbGetCoil( CO_COOLER_ON ) != FALSE ) {
+            CoolerOnBit = SET;
+        } else {
+
+            /* jai baigesi OverheatStopTimer taimerio laikas ir is draiverio negaunam Overheat alarma, numetam alarmo bita */
+            if( OverheatStopTimer < timestamp ) {
+                CoolerOnBit = RESET;
+            }
+        }
+    }
+
+
+    if(CoolerOnBit != RESET) COOLER_ON();
+    else COOLER_OFF();
+}
+
+/*  */
+static void CoolerOnByTime(uint8_t sec){
+
+    CoolerOnBit = SET;
+    OverheatStopTimer = timestamp + sec * 1000;
+}
+
+
+/* Reles handleris
+Alarm rele aktyvuojama esant kritinei klaidai arba Modbus CO_RELAY_ON registru
+Kritines klaidos:
+1.
+2.
+3.
+4.
+
+T >= 20ms, main
+*/
+static void RelayController(void) {
+
+    if( xMbGetCoil( CO_RELAY_ON ) != FALSE ) RELAY_ON();
+    else RELAY_OFF();
+}
+
+
+
+/* Status ir Fault indikatoriu valdiklis. T = 100ms
+Klaidu rodymas:
+FAULT ledas sviecia pastoviai. Draiverio ledas rodo draiverio Overheat ir Overcurrent alarmus.
+STATUS ledas mirksejimais rodo klaidos koda:
+
+x1 - VBUS klaida
+x2 - Hall sensor klaida
+x3 - Motor klaida
+x4 -
+
+Kaip rodom kelios klaidos???
+*/
+static void LedsController(void) {
+
+    static uint32_t delay;
+    uint16_t timeout = 0;
+    static uint8_t error = 0;
+    static FlagStatus led_state = 0;
+
+    static GPIO_PinState last_hall_state = GPIO_PIN_RESET;
+
+    if(TestModeFlag != RESET) {
+
+        STATUS_LED_ON();
+        FAULT_LED_ON();
+        return;
+    }
+
+    switch(SMC_Control.SMC_State) {
+
+    case FSM_STATE_FAULT:
+
+        /* FAULT ledas sviecia. Klaidos matome modbus registre */
+        FAULT_LED_ON();
+
+        /* STATUS leda panaudojam klaidos kodo parodymui */
+        if(error == 0) {
+
+            STATUS_LED_OFF();
+
+            if( READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS ) != RESET ) error = 6;
+
+            if( READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_HS ) != RESET ) error = 5;
+
+            if( READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_MOTOR ) != RESET ) error = 4;
+
+            if( READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_VBUS ) != RESET ||
+                    READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_VBUS_LOW ) != RESET ||
+                    READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_VBUS_HIGH ) != RESET ) {
+
+                error = 3;
+            }
+
+            if( READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_ULVO ) != RESET ) error = 2;
+
+            if( READ_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_HW_TH_SHUTDOWN ) != RESET) error = 1;
+
+            timeout = 1600;
+        } else {
+
+            if( delay > timestamp ) break;
+
+            /* rodom klaida */
+            switch(led_state) {
+            case RESET: //dega
+                STATUS_LED_ON();
+                break;
+            case SET: //nedega
+                timeout = 300;
+                STATUS_LED_OFF();
+                error--;
+                break;
+            }
+
+            led_state = !led_state;
+        }
+
+        delay = timestamp + timeout;
+
+        break;
+    default:
+
+        /* gesinam FAULT leda */
+        FAULT_LED_OFF();
+
+        error = 0;
+
+        /* STATUS ledu parodom Holo daviklio suveikima */
+        if( last_hall_state != READ_HALL_SENSOR_INPUT() ) {
+
+            STATUS_LED_ON();
+            last_hall_state = READ_HALL_SENSOR_INPUT();
+
+            delay = timestamp + 100;// <-- sumazinam uzdelsima, kad greiciau uzgestu
+
+            break;
+        }
+
+        /* STATUS ledu rodom komtrolerio busena */
+        if( ( SMC_Control.MotorData.Status & STATUS_MOT_STATUS ) != STATUS_MOT_STATUS_STOPPED ) {
+            /* kai variklis sukasi, STATUS ledu sviecia nuolat */
+            STATUS_LED_ON();
+            delay = timestamp;
+        } else {
+            /* kai variklis stovi, STATUS ledu mirkciojam kas 5000 ms */
+            if(delay < timestamp) {
+
+                if( GET_STATUS_LED_STATE() == LED_OFF ) {
+                    STATUS_LED_ON();
+                } else {
+                    STATUS_LED_OFF();
+                    delay = timestamp + 5000;
+                }
+            }
+        }
+
+        break;
+    }
+}
+
+
+/* L6470 draiverio Hard Reset funkcija */
+static void L6470_HardReset(void){
+    L6470_RST_LOW();
+    HAL_Delay(100);
+    L6470_RST_HIGH();
+}
+
+
+/*   */
+static void SystemReset(void) {
+    /* stabdom varikli */
+    L6470_softStop();
+
+    STATUS_LED_ON();
+    FAULT_LED_ON();
+
+    /* laukiam kol variklis sustos */
+    while( ( SMC_Control.MotorData.Status & STATUS_MOT_STATUS ) != STATUS_MOT_STATUS_STOPPED ) {
+
+        SMC_Control.MotorData.Status = L6470_getStatus();
+
+        HAL_Delay(10);
+    }
+
+    HAL_Delay(300);
+
+    BSP_SystemReset();
+}
+
+
+
+/* SYSTICK callback funkcija */
+void HAL_SYSTICK_Callback(void){
+
+    static uint8_t wr_to_eeprom_cnt = 0;
+    static uint32_t time = 0u;
+
+    SysTimeCounterUpdate();
+
+    SoundHandler();
+
+    timestamp = GetTimestamp();
+    wtime = GetWTime();
+
+    if( time <= timestamp ) {
+        time = timestamp + 1000u;
+        wtime++;
+
+        /* kas minute EEPROMe saugojam WTIME */
+        if( wr_to_eeprom_cnt++ >= 60 ){
+            wr_to_eeprom_cnt = 0;
+            SaveWTimeFlag = SET;
+        }
+    }
+
+    ReadAnalogsFlag = SET;
+}
+
+
+/* chekinam bodreito reiksme - ar standartine? */
+HAL_StatusTypeDef CheckBaudrateValue(uint32_t baudrate) {
+
+    if( GetIndexByBaudrate( baudrate ) == 0xFF ) return HAL_ERROR;
+
+    return HAL_OK;
+}
+
+
+HAL_StatusTypeDef CheckBaudrateIndex( uint8_t idx ) {
+
+    if( GetBaudrateByIndex( idx ) == 0xFFFFFFFF ) return HAL_ERROR;
+
+    return HAL_OK;
+}
+
+
+/* grazinam bodreito indeksa lenteleje. Jai bodreito reiksme nestandartine grazinam 0xFF */
+uint8_t GetIndexByBaudrate( uint32_t baudrate ) {
+
+    uint8_t i = 0;
+
+    while(baudrate != baudrates[i]) {
+        if( i >= ( sizeof(baudrates)/sizeof(baudrate) ) ) {
+            i = 0xFF;
+            break;
+        }
+
+        i++;
+    }
+
+    return i;
+}
+
+
+/* grazinam bodreita pagal jo indeksa lenteleje. Jai indeksas didesnis uz standartiniu bodreitu skaiciu,
+grazinam 0xFFFFFFFF */
+uint32_t GetBaudrateByIndex( uint8_t idx ) {
+
+    if( idx > sizeof(baudrates)/sizeof(uint32_t) ) return 0xFFFFFFFF;
+
+    return baudrates[idx];
+}
+
+
+uint8_t GetCurrentBaudrateIndex( void ) {
+    return GetIndexByBaudrate( ports[MbPortParams.Uart]->Init.BaudRate );
+}
+
+uint8_t GetCurrentParity( void ) {
+    if(ports[MbPortParams.Uart]->Init.Parity == UART_PARITY_ODD) return MB_PAR_ODD;
+    if(ports[MbPortParams.Uart]->Init.Parity == UART_PARITY_EVEN) return MB_PAR_EVEN;
+    return MB_PAR_NONE;
+}
+
+uint8_t GetCurrentStopBits( void ) {
+    if(ports[MbPortParams.Uart]->Init.StopBits == UART_STOPBITS_2) return 2U;
+    return 1U;
+}
+
+uint8_t GetCurrentDataBits( void ) {
+    if(ports[MbPortParams.Uart]->Init.WordLength == UART_WORDLENGTH_9B) return 9U;
+    return 8U;
+}
+
+
+
+/*  */
+uint8_t InverseBits(uint8_t data) {
+
+    int8_t i = 7;
+    uint8_t j = 0, temp = 0;
+
+    while(i >= 0) {
+        temp |= ( ( data >> j++) & 1 ) << i--;
+    }
+
+    return temp;
+}
 /* USER CODE END 4 */
 
 /**

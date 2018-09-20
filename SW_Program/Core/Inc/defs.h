@@ -1,8 +1,9 @@
 #ifndef DEFINES_H_INCLUDED
 #define DEFINES_H_INCLUDED
 
+#include <stdint.h>
 
-typedef enum {RES_OK = 0, RES_ERROR} eRESULT_TypeDef;
+typedef enum { RES_OK = 0, RES_ERROR, RES_BUSY, RES_TIMEOUT, RES_BAD_PARAMS } eRESULT_TypeDef;  // atitinka HAL_StatusTypeDef
 typedef enum { FSM_MODE_MANUAL = 0, FSM_MODE_MODBUS, FSM_MODE_STEPCLOCK, FSM_MODE_TESTMODE } eMode_TypeDef;
 typedef enum { FSM_STATE_STOP = 0, FSM_STATE_NORMAL, FSM_STATE_FAULT, FSM_STATE_ACCELERATE, FSM_STATE_DECELERATE, FSM_STATE_SCROLLING } eState_TypeDef;
 
@@ -52,6 +53,7 @@ extern SmcHandle_TypeDef SMC_Control;
 typedef struct {
 
     uint8_t         Uart;
+    uint8_t         ModbusActive;
 
     struct{
         uint16_t*   pmbus;      // pointeris i Modbus HR
@@ -159,6 +161,35 @@ struct MotorParamSet{
 
 
 
+/* EEPROM adresai */
+#define EEADDR_BASE                     0
+#define EEADDR_INIT_BYTE                EEADDR_BASE+3
+#define EEADR_MBADDR                    EEADDR_BASE+5                   // byte
+#define EEADDR_MBBAUDRATE               EEADR_MBADDR+1                  // byte
+#define EEADR_PARITY                    EEADDR_MBBAUDRATE+1             // byte
+#define EEADR_STOPBITS                  EEADR_PARITY+1                  // byte
+#define EEADR_SCROLL_RPM                EEADR_STOPBITS+1                // byte
+#define EEADR_HS_TO_VALUE               EEADR_SCROLL_RPM+1              // byte
+#define EEADR_SCROLL_OFF_CYCLE_TIME     EEADR_HS_TO_VALUE+1             // word
+#define EEADR_SCROLL_ON_CYCLE_TIME      EEADR_SCROLL_OFF_CYCLE_TIME+2   // word
+#define EEADR_SCROLL_SYNC               EEADR_SCROLL_ON_CYCLE_TIME+2    // byte
+#define EEADR_MICROSTEPS                EEADR_SCROLL_SYNC+1             // byte
+#define EEADR_USERSET_STEPS_PER_REV     EEADR_MICROSTEPS+1              // byte
+#define EEADR_USERSET_KVAL_RUN          EEADR_USERSET_STEPS_PER_REV+1   // byte
+#define EEADR_USERSET_KVAL_ACC          EEADR_USERSET_KVAL_RUN+1        // byte
+#define EEADR_USERSET_KVAL_DEC          EEADR_USERSET_KVAL_ACC+1        // byte
+#define EEADR_USERSET_KVAL_HOLD         EEADR_USERSET_KVAL_DEC+1        // byte
+#define EEADR_USERSET_TRES_OCD          EEADR_USERSET_KVAL_HOLD+1       // word
+#define EEADR_USERSET_TRES_STALL        EEADR_USERSET_TRES_OCD+2        // word
+#define EEADR_MIN_RPM                   EEADR_USERSET_TRES_STALL+2      // byte
+#define EEADR_MAX_RPM                   EEADR_MIN_RPM+1                 // byte
+#define EEADR_USERSET_SPEED_ACC         EEADR_MAX_RPM+1                 // word
+#define EEADR_USERSET_SPEED_DEC         EEADR_USERSET_SPEED_ACC+2       // word
+#define EEADR_OVH_TIMEOUT               EEADR_USERSET_SPEED_DEC+2       // word
+#define EEADR_SOUND_LEVEL               EEADR_OVH_TIMEOUT+2             // byte
+#define EEADR_WTIME                     EEADR_SOUND_LEVEL+1             // dword
+#define EEADR_TRANSMISSION_RATIO        EEADR_WTIME+4                   // byte
+#define EEADR_WDT_FUNC                  EEADR_TRANSMISSION_RATIO+1      // byte
 
 
 

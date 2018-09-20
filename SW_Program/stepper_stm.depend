@@ -3257,7 +3257,7 @@
 	"mbcrc.h"
 	"mbport.h"
 
-1537358007 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\port.h
+1537426274 c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\port\port.h
 	"board.h"
 
 1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal.h
@@ -3293,8 +3293,8 @@
 	"stm32f0xx_hal_usart.h"
 	"stm32f0xx_hal_wwdg.h"
 
-1537368140 c:\working\git\stepperstm_ii\sw_program\core\inc\main.h
-	<stdint.h>
+1537429451 c:\working\git\stepperstm_ii\sw_program\core\inc\main.h
+	"defs.h"
 
 1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
 	"stm32f0xx_hal_def.h"
@@ -3612,7 +3612,7 @@
 	"mbconfig.h"
 	"user_mb_app.h"
 
-1537361356 c:\working\git\stepperstm_ii\sw_program\core\inc\user_mb_app.h
+1537422918 c:\working\git\stepperstm_ii\sw_program\core\inc\user_mb_app.h
 	"mb.h"
 	"mbconfig.h"
 
@@ -3666,7 +3666,7 @@
 	"mbproto.h"
 	"user_mb_app.h"
 
-1537357948 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\mb.c
+1537450990 source:c:\working\git\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\mb.c
 	<stdlib.h>
 	<string.h>
 	"port.h"
@@ -3701,7 +3701,7 @@
 	"mbport.h"
 	"board.h"
 
-1537371418 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.h
+1537453301 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.h
 	"stm32f0xx_hal.h"
 	"common.h"
 	"hw_typedefs.h"
@@ -3731,22 +3731,25 @@
 
 1527176687 source:c:\working\git\stepperstm_ii\sw_program\startup\startup_stm32f0xx.s
 
-1537371632 source:c:\working\git\stepperstm_ii\sw_program\core\src\main.c
+1537455413 source:c:\working\git\stepperstm_ii\sw_program\core\src\main.c
 	"main.h"
 	"stm32f0xx_hal.h"
-	<string.h>
+	"common.h"
 	"mb.h"
 	"user_mb_app.h"
 	"M25AAxx.h"
+	"l6470.h"
+	"sound.h"
 
 1537345593 source:c:\working\git\stepperstm_ii\sw_program\core\src\stm32f0xx_hal_msp.c
 	"stm32f0xx_hal.h"
 
-1537360315 source:c:\working\git\stepperstm_ii\sw_program\core\src\stm32f0xx_it.c
+1537454883 source:c:\working\git\stepperstm_ii\sw_program\core\src\stm32f0xx_it.c
 	"stm32f0xx_hal.h"
 	"stm32f0xx.h"
 	"stm32f0xx_it.h"
 	"board.h"
+	"sound.h"
 
 1537345592 c:\working\git\stepperstm_ii\sw_program\core\inc\stm32f0xx_it.h
 	"stm32f0xx_hal.h"
@@ -4019,7 +4022,12 @@
 1509027297 c:\working\git\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_system.h
 	"stm32f0xx.h"
 
-1537355209 c:\working\git\stepperstm_ii\sw_program\core\inc\common.h
+1537426123 c:\working\git\stepperstm_ii\sw_program\core\inc\common.h
+	<stdint.h>
+	<stdbool.h>
+	<math.h>
+	<stdlib.h>
+	<string.h>
 
 1537371503 source:c:\working\git\stepperstm_ii\sw_program\core\src\board.c
 	"board.h"
@@ -4027,20 +4035,17 @@
 
 1537362298 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\hw_typedefs.h
 
-1537361245 source:c:\working\git\stepperstm_ii\sw_program\core\libs\systick\systick.c
+1537425520 source:c:\working\git\stepperstm_ii\sw_program\core\libs\systick\systick.c
 	"board.h"
 	"systick.h"
 
 1537251678 c:\working\git\stepperstm_ii\sw_program\core\libs\systick\systick.h
 
-1537370815 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
-	<stdlib.h>
+1537437165 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
 	"M25AAxx.h"
-	"board.h"
 
-1537370815 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
-	<stdbool.h>
-	<stdint.h>
+1537434021 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
+	"board.h"
 
 1537387828 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
 	<stdlib.h>
@@ -4858,4 +4863,33 @@
 	"sound.h"
 
 1537388607 d:\projects\stepperstm_ii\sw_program\core\libs\sound\sound.h
+
+1537446140 c:\working\git\stepperstm_ii\sw_program\core\inc\defs.h
+	<stdint.h>
+
+1537453625 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.c
+	"board.h"
+	"user_mb_app.h"
+	"sound.h"
+
+1537428136 c:\working\git\stepperstm_ii\sw_program\core\libs\sound\sound.h
+
+1537437103 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.c
+	"l6470.h"
+	"board.h"
+
+1537422918 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.h
+	"common.h"
+
+1537428153 source:c:\working\git\stepperstm_ii\sw_program\core\libs\sound\sound.c
+	"board.h"
+	"sound.h"
+
+1537436230 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\iic_eeprom\iic_eeprom.c
+	<stdlib.h>
+	<string.h>
+	"iic_eeprom.h"
+
+1537434021 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\iic_eeprom\iic_eeprom.h
+	"board.h"
 

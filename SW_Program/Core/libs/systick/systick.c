@@ -62,7 +62,7 @@ void SysTimeCounterUpdate(void) {
 
     static uint32_t time = 0u;
 
-    SysTimers.CurrentTimestamp = HAL_GetTick();
+    SysTimers.CurrentTimestamp = BSP_GetTick();
 
     if( time <= SysTimers.CurrentTimestamp ) {
         time = SysTimers.CurrentTimestamp + 1000u;

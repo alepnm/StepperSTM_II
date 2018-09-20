@@ -610,7 +610,7 @@ static byte Xfer(byte data_tx) {
     byte data_rx;
 
     CS_LOW();
-    (void)BSP_SpiTxRx(&data_tx, &data_rx, 1);
+    (void)BSP_L6470_SPI_TransmitReceive(&data_tx, &data_rx, 1);
     CS_HIGH();
 
     return data_rx;

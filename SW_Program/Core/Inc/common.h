@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
 
 #ifndef NULL
     #define NULL ((void *)0)

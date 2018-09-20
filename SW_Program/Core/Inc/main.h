@@ -6,7 +6,7 @@
   ******************************************************************************
   ** This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
-  * USER CODE END. Other portions of this file, whether 
+  * USER CODE END. Other portions of this file, whether
   * inserted by the user or by software development tools
   * are owned by their respective copyright owners.
   *
@@ -44,13 +44,11 @@
 /* Includes ------------------------------------------------------------------*/
 
 /* USER CODE BEGIN Includes */
-#include <stdint.h>
+//#include <stdint.h>
 #include "defs.h"
 /* USER CODE END Includes */
 
 /* Private define ------------------------------------------------------------*/
-#define USE_HC598 1
-
 #define RELAY_Pin GPIO_PIN_13
 #define RELAY_GPIO_Port GPIOC
 #define DI3_Pin GPIO_PIN_14
@@ -97,13 +95,12 @@
 
 /* ########################## Assert Selection ############################## */
 /**
-  * @brief Uncomment the line below to expanse the "assert_param" macro in the 
+  * @brief Uncomment the line below to expanse the "assert_param" macro in the
   *        HAL drivers code
   */
 /* #define USE_FULL_ASSERT    1U */
 
 /* USER CODE BEGIN Private defines */
-
 
 /* USER CODE END Private defines */
 
