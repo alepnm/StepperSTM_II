@@ -42,6 +42,7 @@
 
 /* USER CODE BEGIN Includes */
 #include "common.h"
+#include "fsm.h"
 #include "mb.h"
 #include "user_mb_app.h"
 #include "M25AAxx.h"
@@ -55,7 +56,10 @@
 #define UNIT_HW_VERSION     "30"
 #define UNIT_PROD_CODE      "GRG060"
 
-#define MODBUS_ENABLE
+#define TEMP110_CAL_ADDR                ( (uint16_t*) ((uint32_t) 0x1FFFF7C2) )
+#define TEMP30_CAL_ADDR                 ( (uint16_t*) ((uint32_t) 0x1FFFF7B8) )
+#define VDD_CALIB                       ( (uint16_t) (330) )
+#define VDD_APPLI                       ( (uint16_t) (300) )
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -98,7 +102,6 @@ static uint8_t uStepRegisterValue = 0;
 static uint32_t OverheatStopTimer;
 
 static FlagStatus CoolerOnBit = RESET;
-static FlagStatus TestModeFlag = RESET;
 static FlagStatus SaveWTimeFlag = RESET;
 static FlagStatus SystemNeedReInit = RESET;
 static FlagStatus SystemNeedReBoot = RESET;
@@ -129,6 +132,21 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 
 /* USER CODE BEGIN PFP */
+void                SystemDataInit(void);
+void                MbDataInit(void);
+void                ReadDipSwitch(void);
+void                EEDataRestore(void);
+void                SystemDataUpdate(void);
+void                MbDataUpdate(void);
+void                ReadAnalogInputs(void);
+void                MotorConfig( const MotorParamSet* preset );
+void                CoolerController(void);
+void                CoolerOnByTime(uint8_t sec);
+void                RelayController(void);
+void                LedsController(void);
+void                SystemReset(void);
+
+
 HAL_StatusTypeDef   CheckBaudrateValue(uint32_t baudrate);
 HAL_StatusTypeDef   CheckBaudrateIndex( uint8_t idx );
 
@@ -142,22 +160,7 @@ uint8_t             GetCurrentDataBits( void );
 
 uint8_t             InverseBits(uint8_t data);
 
-
-
 /* Private function prototypes -----------------------------------------------*/
-static void     SystemDataInit(void);
-static void     MbDataInit(void);
-static void     EEDataRestore(void);
-static void     SystemDataUpdate(void);
-static void     MbDataUpdate(void);
-static void     DipSwitchDataUpdate(void);
-static void     MotorConfig( const struct MotorParamSet* preset );
-static void     CoolerController(void);
-static void     CoolerOnByTime(uint8_t sec);
-static void     RelayController(void);
-static void     LedsController(void);
-static void     L6470_HardReset(void);
-static void     SystemReset(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -211,32 +214,7 @@ int main(void)
 
     BSP_HW_Init();
 
-    SystemDataInit();
-
-    UserTimersInit();
-
-    BSP_ReadDipSwitch();
-
-#ifdef MODBUS_ENABLE
-    if( eMBInit( MB_RTU, (UCHAR)(*MbPortParams.MbAddr.pmbus), MbPortParams.Uart, (ULONG)( GetBaudrateByIndex(*MbPortParams.Baudrate.pmbus) ), (eMBParity)(*MbPortParams.Parity.pmbus) ) == MB_ENOERR ){
-        if( eMBEnable() == MB_ENOERR ){
-            if( eMBSetSlaveID( 123, TRUE, ucSlaveIdBuf, (MB_FUNC_OTHER_REP_SLAVEID_BUF - 4) ) == MB_ENOERR ){
-                MbPortParams.ModbusActive = true;
-            }
-        }
-    }
-
-    if(MbPortParams.ModbusActive == false){
-        SET_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS );
-        SMC_Control.SMC_State = FSM_STATE_FAULT;
-    }
-#endif
-
-    MbDataInit();
-
-    SoundInit( true );
-
-    L6470_Init();
+    SMC_Control.SMC_State = FSM_STATE_INIT;
 
   /* USER CODE END 2 */
 
@@ -253,9 +231,6 @@ int main(void)
 
             delay = timestamp + 20;
 
-            BSP_ReadDipSwitch();
-
-            BSP_ReadAnalogInputs();
 
             SystemDataUpdate();
 
@@ -263,6 +238,7 @@ int main(void)
 
             LedsController();
 
+            FSM_Manager();
       }
   /* USER CODE END WHILE */
 
@@ -823,7 +799,13 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /*  */
-static void SystemDataInit(void){
+void SystemDataInit(void){
+
+    uint8_t i = 0;
+
+    ReadDipSwitch();
+    UserTimersInit();
+    SoundInit( true );
 
     EEDataRestore();
 
@@ -847,18 +829,24 @@ static void SystemDataInit(void){
     memcpy(SMC_Control.StrData.pName, UNIT_NAME, 3);
     memcpy(SMC_Control.StrData.pProdCode, UNIT_PROD_CODE, 7);
 
-    (void)M25AAxx_ReadUID( SMC_Control.StrData.pId );
+
+    do{
+        *(SMC_Control.StrData.pId+i) = M25AAxx.UidBuffer[i];
+    }while(++i < M25AAxx_UID_BUFFER_SIZE);
+
 
     MbPortParams.Uart = 0;
-    MbPortParams.MbAddr.cvalue = MBADDR_DEF;
-    MbPortParams.Baudrate.cvalue = MBBAURATE_DEF;
-    MbPortParams.Parity.cvalue = MBPARITY_DEF;
+    MbPortParams.MbAddr.cvalue = usRegHoldingBuf[HR_MBADDR];
+    MbPortParams.Baudrate.cvalue = usRegHoldingBuf[HR_MBBAUDRATE];
+    MbPortParams.Parity.cvalue = usRegHoldingBuf[HR_MBPARITY];
     MbPortParams.DataBits.cvalue = MBWORDLENGHT_DEF;
-    MbPortParams.StopBits.cvalue = MBSTOPBITS_DEF;
+    MbPortParams.StopBits.cvalue = usRegHoldingBuf[HR_MBSTOPBITS];
+
+    SMC_Control.MotorData.pCurrentMotorPreset = GetPresetByID(SMC_Control.DipSwitch.Option.MotorType);
 }
 
 /*  */
-static void MbDataInit(void){
+void MbDataInit(void){
 
     __enter_critical();
 
@@ -868,11 +856,29 @@ static void MbDataInit(void){
     *MbPortParams.DataBits.pmbus = MbPortParams.DataBits.cvalue;
     *MbPortParams.StopBits.pmbus = MbPortParams.StopBits.cvalue;
 
+
+#ifdef MODBUS_ENABLE
+    if( eMBInit( MB_RTU, (UCHAR)(*MbPortParams.MbAddr.pmbus), MbPortParams.Uart, (ULONG)( GetBaudrateByIndex(*MbPortParams.Baudrate.pmbus) ), (eMBParity)(*MbPortParams.Parity.pmbus) ) == MB_ENOERR ){
+        if( eMBEnable() == MB_ENOERR ){
+            if( eMBSetSlaveID( 123, TRUE, ucSlaveIdBuf, (MB_FUNC_OTHER_REP_SLAVEID_BUF - 4) ) == MB_ENOERR ){
+                MbPortParams.ModbusActive = true;
+            }
+        }
+    }
+#endif
+
+    if(MbPortParams.ModbusActive == false){
+        SET_BIT( usRegInputBuf[IR_FAULT_CODE], FLT_SW_MODBUS );
+        SMC_Control.SMC_State = FSM_STATE_FAULT;
+    }else{
+        SMC_Control.SMC_State = FSM_STATE_STOP;
+    }
+
     __exit_critical();
 }
 
 /*  */
-static void EEDataRestore(void) {
+void EEDataRestore(void) {
 
     /* jai EEPROM ne inicializuotas, inicializuojam ji */
     if( M25AAxx_ReadByte( EEADDR_INIT_BYTE ) != EE_INIT_BYTE ) {
@@ -918,7 +924,7 @@ static void EEDataRestore(void) {
     }
 
     usRegHoldingBuf[HR_MBADDR] = M25AAxx_ReadByte( EEADR_MBADDR );
-    usRegHoldingBuf[HR_MBBAUDRATE] = M25AAxx_ReadByte( EEADDR_MBBAUDRATE );
+    usRegHoldingBuf[HR_MBBAUDRATE] = 3;//M25AAxx_ReadByte( EEADDR_MBBAUDRATE );
     usRegHoldingBuf[HR_MBPARITY] = M25AAxx_ReadByte( EEADR_PARITY );
     usRegHoldingBuf[HR_MBSTOPBITS] = M25AAxx_ReadByte( EEADR_STOPBITS );
 
@@ -964,11 +970,14 @@ static void EEDataRestore(void) {
 
 
 /*  */
-static void SystemDataUpdate(void){
+void SystemDataUpdate(void){
 
     FlagStatus port_need_update = RESET;
 
     __enter_critical();
+
+    ReadDipSwitch();
+    ReadAnalogInputs();
 
     /* chekinam, ar nepasikeite porto parametrai; jai pasikeite - chekinam reiksme ir aktyvuojam porto rekonfiguracija.
     Jai parametras neteisingas, nekeiciam ji */
@@ -1026,12 +1035,15 @@ static void SystemDataUpdate(void){
 
 
 
-
-
-    FlagStatus bit = RESET;
-
     /* daugiafunkcinis registras */
     switch( usRegHoldingBuf[HR_MAGIC_REG] ) {
+    case 0x0000:
+
+        /* iseinam is TESTO */
+        if(SMC_Control.SMC_State == FSM_STATE_TEST) SMC_Control.SMC_State = FSM_STATE_STOP;
+
+
+        break;
     case 0x16AD:    // reinicializacija defaultais
         usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
         SystemNeedReInit = SET;
@@ -1042,26 +1054,14 @@ static void SystemDataUpdate(void){
         break;
     case 0x2A14:    // ventiliatoriaus ijungimas/isjungimas
         usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
-        bit = xMbGetCoil( CO_COOLER_ON );
-        xMbSetCoil( CO_COOLER_ON, !bit );
+        xMbSetCoil( CO_COOLER_ON, !xMbGetCoil( CO_COOLER_ON ) );
         break;
     case 0x2A15:    // reles ijungima/isjungimas
         usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
-        bit = xMbGetCoil( CO_RELAY_ON );
-        xMbSetCoil( CO_RELAY_ON, !bit );
+        xMbSetCoil( CO_RELAY_ON, !xMbGetCoil( CO_RELAY_ON ) );
         break;
-    case 0x8691:    // paleidziam/stabdom varikli i viena puse
-        bit = SET;
-    case 0x8692:    // paleidziam/stabdom varikli i kita puse
-        usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
-//        TestModeFlag = !TestModeFlag;
-//
-//        if(TestModeFlag == RESET){
-//            //L6470_softFree();
-//            L6470_run( SMC_Control.MotorData.RotDirSetting, ConvertRpmToStepsPerSec( (float)SMC_Control.MotorData.RotSpeedSetting ) );
-//        }else{
-//            L6470_run( bit, ConvertRpmToStepsPerSec( (float)60 ) );
-//        }
+    case 0x8692:
+        SMC_Control.SMC_State = FSM_STATE_TEST;
         break;
     case 0xABBA:    // istrinam WTIME
         wtime = usRegHoldingBuf[HR_MAGIC_REG] = 0x0000;
@@ -1070,9 +1070,6 @@ static void SystemDataUpdate(void){
     default:
         break;
     }
-
-
-    DipSwitchDataUpdate();
 
 
     /* jai reikia, inicializuojames Defaultais */
@@ -1096,11 +1093,10 @@ static void SystemDataUpdate(void){
 
 
 /*  */
-static void MbDataUpdate(void){
+void MbDataUpdate(void){
 
     usRegInputBuf[IR_WTIMEHI] = LO16(wtime);
     usRegInputBuf[IR_WTIMELO] = HI16(wtime);
-
 
     xMbSetDInput( DI_SW1_STATE, SMC_Control.DipSwitch.Data & 0x01 );
     xMbSetDInput( DI_SW2_STATE, SMC_Control.DipSwitch.Data>>1 & 0x01 );
@@ -1122,9 +1118,11 @@ static void MbDataUpdate(void){
 
 
 /*  */
-static void DipSwitchDataUpdate(void) {
+void ReadDipSwitch(void) {
 
     static uint8_t ldipsw;
+
+    BSP_ReadDipSwitch();
 
     uint8_t dipsw = SMC_Control.DipSwitch.Data^0xFF;    // invertuojam
 
@@ -1143,9 +1141,74 @@ static void DipSwitchDataUpdate(void) {
 }
 
 
+
+/* Suvidurkintus rezultatus sudedam i tam skirtus registrus */
+void ReadAnalogInputs(void) {
+
+    static uint8_t stage = 0, n_spreq = 0, n_vbus = 0, n_itemp = 0;
+    static uint32_t sum_spreq = 0, sum_vbus = 0, sum_itemp = 0;
+
+    uint16_t adc = 0;
+
+    __enter_critical();
+
+    switch(stage) {
+    case 0:
+
+        if(n_vbus++ < 64) sum_vbus += BSP_GetAdcValue(ADC_CHANNEL_0);
+        else {
+
+            SMC_Control.ADC_Vals.Vbus = (uint16_t)(sum_vbus>>6);
+            n_vbus = sum_vbus = 0;
+            usRegInputBuf[IR_VBUS_VALUE] = SMC_Control.ADC_Vals.Vbus * 0.822;   // verciam voltais  ( formatas V*100 )
+        }
+
+        stage = 1;
+        break;
+    case 1:
+
+        adc = BSP_GetAdcValue(ADC_CHANNEL_1);
+
+        /* filtruojam triuksma ir vidurkinam ADC reiksme */
+        if( SMC_Control.ADC_Vals.SpReq < adc - 20 || SMC_Control.ADC_Vals.SpReq > adc + 20 ) {
+
+            if(n_spreq++ < 8) sum_spreq += adc;
+            else {
+
+                SMC_Control.ADC_Vals.SpReq = (uint16_t)(sum_spreq>>3);
+                n_spreq = sum_spreq = 0;
+                usRegInputBuf[IR_SPREQ_VALUE] = SMC_Control.ADC_Vals.SpReq * 0.235;   // verciam voltais  ( formatas V*100 )
+            }
+        }
+
+        stage = 2;
+        break;
+    case 2:
+
+        if(n_itemp++ < 8) sum_itemp += BSP_GetAdcValue(ADC_CHANNEL_TEMPSENSOR);
+        else {
+
+            SMC_Control.ADC_Vals.McuTemp  = (int32_t) (sum_itemp>>3);
+
+            int32_t temperature = ((SMC_Control.ADC_Vals.McuTemp * VDD_APPLI / VDD_CALIB) - (int32_t) *TEMP30_CAL_ADDR );
+            temperature = temperature * (int32_t)(110 - 30);
+            usRegInputBuf[IR_MCUTEMP] = (uint16_t)(temperature / (int32_t)(*TEMP110_CAL_ADDR - *TEMP30_CAL_ADDR) + 30);
+
+            n_itemp = sum_itemp = 0;
+        }
+
+        stage = 0;
+        break;
+    }
+
+    __exit_critical();
+}
+
+
+
 /* Draiverio konfiguravimas aktyviam presetui
 */
-static void MotorConfig( const struct MotorParamSet* preset ) {
+void MotorConfig( const MotorParamSet* preset ) {
 
     __enter_critical();
 
@@ -1177,7 +1240,7 @@ static void MotorConfig( const struct MotorParamSet* preset ) {
 Kuleris aktyvuojamas L6470 overheat signalu arba Modbus CO_COOLER_ON registru
 T >= 20ms, main
 */
-static void CoolerController(void) {
+void CoolerController(void) {
 
     /* jai draiverio perkaitimas, aktyvuojam kuleri, jai ne - pagal COOLER Modbus bituka */
     if( READ_BIT( SMC_Control.MotorData.Status, STATUS_TH_WRN ) == RESET ) {
@@ -1205,7 +1268,7 @@ static void CoolerController(void) {
 }
 
 /*  */
-static void CoolerOnByTime(uint8_t sec){
+void CoolerOnByTime(uint8_t sec){
 
     CoolerOnBit = SET;
     OverheatStopTimer = timestamp + sec * 1000;
@@ -1222,7 +1285,7 @@ Kritines klaidos:
 
 T >= 20ms, main
 */
-static void RelayController(void) {
+void RelayController(void) {
 
     if( xMbGetCoil( CO_RELAY_ON ) != FALSE ) RELAY_ON();
     else RELAY_OFF();
@@ -1242,7 +1305,7 @@ x4 -
 
 Kaip rodom kelios klaidos???
 */
-static void LedsController(void) {
+void LedsController(void) {
 
     static uint32_t delay;
     uint16_t timeout = 0;
@@ -1251,7 +1314,7 @@ static void LedsController(void) {
 
     static GPIO_PinState last_hall_state = GPIO_PIN_RESET;
 
-    if(TestModeFlag != RESET) {
+    if(SMC_Control.SMC_State == FSM_STATE_TEST) {
 
         STATUS_LED_ON();
         FAULT_LED_ON();
@@ -1351,16 +1414,8 @@ static void LedsController(void) {
 }
 
 
-/* L6470 draiverio Hard Reset funkcija */
-static void L6470_HardReset(void){
-    L6470_RST_LOW();
-    HAL_Delay(100);
-    L6470_RST_HIGH();
-}
-
-
 /*   */
-static void SystemReset(void) {
+void SystemReset(void) {
     /* stabdom varikli */
     L6470_softStop();
 

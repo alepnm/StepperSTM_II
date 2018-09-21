@@ -3701,7 +3701,7 @@
 	"mbport.h"
 	"board.h"
 
-1537453301 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.h
+1537518250 c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.h
 	"stm32f0xx_hal.h"
 	"common.h"
 	"hw_typedefs.h"
@@ -3731,10 +3731,11 @@
 
 1527176687 source:c:\working\git\stepperstm_ii\sw_program\startup\startup_stm32f0xx.s
 
-1537455413 source:c:\working\git\stepperstm_ii\sw_program\core\src\main.c
+1537538143 source:c:\working\git\stepperstm_ii\sw_program\core\src\main.c
 	"main.h"
 	"stm32f0xx_hal.h"
 	"common.h"
+	"fsm.h"
 	"mb.h"
 	"user_mb_app.h"
 	"M25AAxx.h"
@@ -4041,11 +4042,12 @@
 
 1537251678 c:\working\git\stepperstm_ii\sw_program\core\libs\systick\systick.h
 
-1537437165 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
+1537515367 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
 	"M25AAxx.h"
-
-1537434021 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
 	"board.h"
+
+1537515415 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
+	"common.h"
 
 1537387828 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
 	<stdlib.h>
@@ -4864,21 +4866,25 @@
 
 1537388607 d:\projects\stepperstm_ii\sw_program\core\libs\sound\sound.h
 
-1537446140 c:\working\git\stepperstm_ii\sw_program\core\inc\defs.h
+1537532086 c:\working\git\stepperstm_ii\sw_program\core\inc\defs.h
 	<stdint.h>
+	"fsm.h"
+	"l6470.h"
 
-1537453625 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.c
+1537519442 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\board\board.c
 	"board.h"
 	"user_mb_app.h"
 	"sound.h"
+	"l6470.h"
+	"M25AAxx.h"
 
 1537428136 c:\working\git\stepperstm_ii\sw_program\core\libs\sound\sound.h
 
-1537437103 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.c
+1537516250 source:c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.c
 	"l6470.h"
 	"board.h"
 
-1537422918 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.h
+1537516250 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.h
 	"common.h"
 
 1537428153 source:c:\working\git\stepperstm_ii\sw_program\core\libs\sound\sound.c
@@ -4892,4 +4898,56 @@
 
 1537434021 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\iic_eeprom\iic_eeprom.h
 	"board.h"
+
+1537523673 c:\working\git\stepperstm_ii\sw_program\core\inc\fsm.h
+
+1537526883 source:c:\working\git\stepperstm_ii\sw_program\core\src\fsm.c
+	"fsm.h"
+	"defs.h"
+	"board.h"
+	"l6470.h"
+
+1537537504 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm.h
+	"common.h"
+	"l6470.h"
+
+1537537146 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm.c
+	"fsm.h"
+	"defs.h"
+	"board.h"
+	"fsm_init.c"
+	"fsm_stop.c"
+	"fsm_normal.c"
+	"fsm_scroll.c"
+	"fsm_fault.c"
+	"fsm_test.c"
+	"fsm_config.c"
+
+1537528691 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_fault.c
+
+1537527695 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_run.c
+
+1537528712 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_scroll.c
+
+1537528640 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_stop.c
+
+1537537347 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_stop.c
+	"user_mb_app.h"
+
+1537536942 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_normal.c
+	"user_mb_app.h"
+
+1537529192 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_scroll.c
+
+1537529192 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_fault.c
+
+1537528691 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_normal.c
+
+1537528789 source:c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_test.c
+
+1537529192 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_test.c
+
+1537529192 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_config.c
+
+1537537526 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_init.c
 

@@ -2,12 +2,8 @@
 #include "board.h"
 #include "user_mb_app.h"
 #include "sound.h"
-
-
-#define TEMP110_CAL_ADDR                ( (uint16_t*) ((uint32_t) 0x1FFFF7C2) )
-#define TEMP30_CAL_ADDR                 ( (uint16_t*) ((uint32_t) 0x1FFFF7B8) )
-#define VDD_CALIB                       ( (uint16_t) (330) )
-#define VDD_APPLI                       ( (uint16_t) (300) )
+#include "l6470.h"
+#include "M25AAxx.h"
 
 
 UART_HandleTypeDef* ports[] = {&huart1, NULL, NULL};
@@ -24,7 +20,6 @@ static HAL_StatusTypeDef    BSP_SPI_Receive(SPI_HandleTypeDef* hspi, uint8_t* pD
 static HAL_StatusTypeDef    BSP_SPI_TransmitReceive(SPI_HandleTypeDef* hspi, uint8_t* pDataTx, uint8_t* pDataRx, uint8_t len);
 
 static HAL_StatusTypeDef    ADC_ConfigChannel(ADC_HandleTypeDef* hadc, ADC_ChannelConfTypeDef* sConfig);
-static uint16_t             GetAdcValue(ADC_ChannelConfTypeDef* sConfig);
 
 /*  */
 void BSP_HW_Init(void) {
@@ -49,6 +44,12 @@ void BSP_HW_Init(void) {
     BSP_PwmTimerInit();
 
     (void)HAL_DAC_Start(&hdac1, DAC_CHANNEL_1);
+
+    /* skaitom UID */
+    (void)M25AAxx_Init();
+
+    /* konfiguruojam L6470 */
+    L6470_Init();
 }
 
 
@@ -328,78 +329,6 @@ void BSP_ReadDipSwitch(void) {
 
 
 
-/* Suvidurkintus rezultatus sudedam i tam skirtus registrus */
-void BSP_ReadAnalogInputs(void) {
-
-    ADC_ChannelConfTypeDef sConfig = {
-        .Channel = ADC_CHANNEL_0,
-        .Rank = ADC_RANK_CHANNEL_NUMBER,
-        .SamplingTime = ADC_SAMPLETIME_55CYCLES_5
-    };
-
-    static uint8_t stage = 0, n_spreq = 0, n_vbus = 0, n_itemp = 0;
-    static uint32_t sum_spreq = 0, sum_vbus = 0, sum_itemp = 0;
-
-    __enter_critical();
-
-    switch(stage) {
-    case 0:
-
-        if(n_vbus++ < 64) sum_vbus += GetAdcValue(&sConfig);
-        else {
-
-            SMC_Control.ADC_Vals.Vbus = (uint16_t)(sum_vbus>>6);
-            usRegInputBuf[IR_VBUS_VALUE] = SMC_Control.ADC_Vals.Vbus * 0.822;   // verciam voltais  ( formatas V*100 )
-            n_vbus = sum_vbus = 0;
-        }
-
-        stage = 1;
-        break;
-    case 1:
-
-        sConfig.Channel = ADC_CHANNEL_1;
-
-        uint16_t adc = GetAdcValue(&sConfig);
-
-        /* filtruojam triuksma ir vidurkinam ADC reiksme */
-        if( SMC_Control.ADC_Vals.SpReq < adc - 20 || SMC_Control.ADC_Vals.SpReq > adc + 20 ) {
-
-            if(n_spreq++ < 8) sum_spreq += adc;
-            else {
-
-                SMC_Control.ADC_Vals.SpReq = (uint16_t)(sum_spreq>>3);
-                usRegInputBuf[IR_SPREQ_VALUE] = SMC_Control.ADC_Vals.SpReq * 0.235;   // verciam voltais  ( formatas V*100 )
-                n_spreq = sum_spreq = 0;
-            }
-        }
-
-        stage = 2;
-        break;
-    case 2:
-
-        sConfig.Channel = ADC_CHANNEL_TEMPSENSOR;
-        sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
-
-        if(n_itemp++ < 8) sum_itemp += GetAdcValue(&sConfig);
-        else {
-
-            SMC_Control.ADC_Vals.McuTemp  = (int32_t) (sum_itemp>>3);
-
-            int32_t temperature = ((SMC_Control.ADC_Vals.McuTemp * VDD_APPLI / VDD_CALIB) - (int32_t) *TEMP30_CAL_ADDR );
-            temperature = temperature * (int32_t)(110 - 30);
-            usRegInputBuf[IR_MCUTEMP] = (uint16_t)(temperature / (int32_t)(*TEMP110_CAL_ADDR - *TEMP30_CAL_ADDR) + 30);
-
-            n_itemp = sum_itemp = 0;
-        }
-
-        stage = 0;
-        break;
-    }
-
-    __exit_critical();
-}
-
-
 /*  */
 HAL_StatusTypeDef    BSP_L6470_SPI_TransmitReceive(uint8_t* pDataTx, uint8_t* pDataRx, uint8_t len){
     return BSP_SPI_TransmitReceive(&hspi1, pDataTx, pDataRx, len);
@@ -417,13 +346,22 @@ HAL_StatusTypeDef    BSP_M25AAxx_SPI_Receive(uint8_t* pData, uint8_t len){
 
 
 
-/* Vieno pasirinkto ADC kanalo nuskaitymas */
-static uint16_t GetAdcValue(ADC_ChannelConfTypeDef* sConfig) {
+/*  */
+uint16_t BSP_GetAdcValue(uint32_t channel){
+
+    ADC_ChannelConfTypeDef sConfig = {
+        .Channel = channel,
+        .Rank = ADC_RANK_CHANNEL_NUMBER,
+        .SamplingTime = ADC_SAMPLETIME_55CYCLES_5
+    };
 
     uint16_t val = 0;
     uint8_t i = 0;
 
-    (void)ADC_ConfigChannel(&hadc, sConfig);
+
+    if(channel == ADC_CHANNEL_TEMPSENSOR) sConfig.SamplingTime = ADC_SAMPLETIME_239CYCLES_5;
+
+    (void)ADC_ConfigChannel(&hadc, &sConfig);
 
     for(i = 0; i < 2; i++) {
 
@@ -502,7 +440,7 @@ static HAL_StatusTypeDef BSP_SPI_Transmit(SPI_HandleTypeDef* hspi, uint8_t* pDat
     HAL_StatusTypeDef result = HAL_OK;
 
     if( ( result = HAL_SPI_Transmit(hspi, pData, len, 10) )!= HAL_OK ) return result;
-    while( hspi1.State == HAL_SPI_STATE_BUSY );
+    while( hspi->State == HAL_SPI_STATE_BUSY );
 
     return HAL_OK;
 }
@@ -513,7 +451,7 @@ static HAL_StatusTypeDef BSP_SPI_Receive(SPI_HandleTypeDef* hspi, uint8_t* pData
     HAL_StatusTypeDef result = HAL_OK;
 
     if( ( result = HAL_SPI_Receive(hspi, pData, len, 10) ) != HAL_OK ) return result;
-    while( hspi1.State == HAL_SPI_STATE_BUSY );
+    while( hspi->State == HAL_SPI_STATE_BUSY );
 
     return HAL_OK;
 }
@@ -524,7 +462,7 @@ static HAL_StatusTypeDef BSP_SPI_TransmitReceive(SPI_HandleTypeDef* hspi, uint8_
     HAL_StatusTypeDef result = HAL_OK;
 
     if( (result = HAL_SPI_TransmitReceive(hspi, pDataTx, pDataRx, len, 10) ) != HAL_OK ) return result;
-    while( hspi1.State == HAL_SPI_STATE_BUSY );
+    while( hspi->State == HAL_SPI_STATE_BUSY );
 
     return HAL_OK;
 }

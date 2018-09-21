@@ -237,6 +237,28 @@ typedef enum{
 #define ACTION_COPY             0x01
 
 
+
+/* Varikliu presetai */
+typedef struct{
+    uint8_t ID;                 // preseto ID
+    uint8_t StepsPerRev;        // variklio stepu per apsisukima
+    struct{
+        uint8_t RunValue;           // KVAL_RUN reiksme, %
+        uint8_t AccValue;           // KVAL_ACC reiksme, %
+        uint8_t DecValue;           // KVAL_DEC reiksme, %
+        uint8_t HoldValue;          // KVAL_HOLD reiksme, %
+    }Kval;
+    struct{
+        uint16_t OcdValue;          // OCD_TH reiksme, mA
+        uint16_t StallValue;        // STALL_TH reiksme, mA
+    }Treshold;
+    struct{
+        uint16_t Acceleration;      //
+        uint16_t Deceleration;      //
+    }Speed;
+}MotorParamSet;
+
+
 /* public functions */
 void L6470_Init(void);
 
@@ -297,7 +319,7 @@ unsigned long FSCalc(float stepsPerSec);
 unsigned long IntSpdCalc(float stepsPerSec);
 unsigned long SpdCalc(float stepsPerSec);
 
-const struct MotorParamSet* Preset(uint8_t preset_id);
+const MotorParamSet* GetPresetByID(uint8_t preset_id);
 
 float SpeedCompensationCalc(float set);
 

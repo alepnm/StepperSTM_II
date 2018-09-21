@@ -106,8 +106,7 @@ void                        BSP_SoundTimerStart(void);
 void                        BSP_SoundTimerStop(void);
 
 void                        BSP_ReadDipSwitch(void);
-
-void                        BSP_ReadAnalogInputs(void);
+uint16_t                    BSP_GetAdcValue(uint32_t channel);
 
 void                        BSP_SetAnalogOut(float volts);
 void                        BSP_SetDAC_Value(float dac);

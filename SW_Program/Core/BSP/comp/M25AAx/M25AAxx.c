@@ -2,19 +2,20 @@
 
 */
 #include "M25AAxx.h"
+#include "board.h"
 
 
 /* **************************** DEFINES, MACRO ***************************** */
-#define M25AA02E48
+#define MEMORY_SIZE                         M25AAxx_EE_SIZE
+#define PAGE_SIZE                           16
+#define M25AAxx_EE_SIZE                     192
+
 
 #ifdef M25AA02E48
-#define M25AAxx_UID_NODE_ADDRESS            0xFA
+    #define M25AAxx_UID_NODE_ADDRESS        0xFA
 #else
-#define M25AAxx_UID_NODE_ADDRESS            0xF8
+    #define M25AAxx_UID_NODE_ADDRESS        0xF8
 #endif
-
-#define MEMORY_SIZE                         EE_SIZE
-#define PAGE_SIZE                           16
 
 
 #define WRITE_STATUS_INSTRUCTION            0x01    // 0b00000001
@@ -38,6 +39,10 @@
 #define CS_HIGH()                           M25AA_CS_HIGH()
 
 
+M25AAxx_TypeDef M25AAxx;
+
+uint8_t buf[10];
+
 /* ****************************    GLOBALS     ***************************** */
 /* ****************************    PRIVATES    ***************************** */
 static eRESULT_TypeDef result = RES_OK;
@@ -51,12 +56,33 @@ static bool     GetWriteFlag( );
 static uint8_t  PullStatusRegister( uint8_t* status );
 static uint8_t  PushStatusRegister( uint8_t* status );
 
-
-
 static uint8_t  spi_send(uint8_t* pData, uint8_t len);
 static uint8_t  spi_receive(uint8_t* pData, uint8_t len);
 
 /* **************************** IMPLEMENTATION ***************************** */
+
+
+/*  */
+uint8_t M25AAxx_Init(void){
+
+    uint8_t buf[M25AAxx_UID_BUFFER_SIZE], i = 0;
+
+    //spi init
+
+    M25AAxx.UidBufferSize = M25AAxx_UID_BUFFER_SIZE;
+
+    WriteDisable();
+    M25AAxx_ReadUID(buf);
+
+    do{
+        M25AAxx.UidBuffer[i] = buf[i];
+    }while(++i < M25AAxx_UID_BUFFER_SIZE);
+
+    return 0;
+}
+
+
+
 
 /* Skaitymas UID */
 uint8_t M25AAxx_ReadUID( unsigned char* buffer) {
@@ -79,11 +105,7 @@ uint8_t M25AAxx_ReadUID( unsigned char* buffer) {
         return 1;
     };
 
-#ifdef M25AA02E48
-    result = spi_receive(buffer, 6);
-#else
-    result = spi_receive(buffer, 8);
-#endif
+    result = spi_receive(buffer, M25AAxx_UID_BUFFER_SIZE);
 
     CS_HIGH();
 

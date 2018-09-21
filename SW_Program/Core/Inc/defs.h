@@ -2,10 +2,14 @@
 #define DEFINES_H_INCLUDED
 
 #include <stdint.h>
+#include "fsm.h"
+#include "l6470.h"
 
 typedef enum { RES_OK = 0, RES_ERROR, RES_BUSY, RES_TIMEOUT, RES_BAD_PARAMS } eRESULT_TypeDef;  // atitinka HAL_StatusTypeDef
-typedef enum { FSM_MODE_MANUAL = 0, FSM_MODE_MODBUS, FSM_MODE_STEPCLOCK, FSM_MODE_TESTMODE } eMode_TypeDef;
-typedef enum { FSM_STATE_STOP = 0, FSM_STATE_NORMAL, FSM_STATE_FAULT, FSM_STATE_ACCELERATE, FSM_STATE_DECELERATE, FSM_STATE_SCROLLING } eState_TypeDef;
+
+#define MODBUS_ENABLE
+
+
 
 /*   */
 typedef struct{
@@ -22,7 +26,7 @@ typedef struct{
     }StrData;
 
     struct{
-        const struct MotorParamSet*  	pCurrentMotorPreset;        // pointeris i naudojamo variklio parametru preseta
+        const MotorParamSet*  	        pCurrentMotorPreset;        // pointeris i naudojamo variklio parametru preseta
         uint16_t                        Status;                     // variklio busena, nuskaityta is draiverio L6470 per spi ( registras STATUS bitai 5-6 (MOT_STATUS) )
         uint16_t                     	RotSpeedSetting;            // nustatytas sukimosi greitis Normal rezime
         uint8_t                     	RotDirSetting;              // nustatyta sukimosi kriptys Normal rezime
@@ -78,28 +82,6 @@ typedef struct {
 } MbPortParams_TypeDef;
 
 extern MbPortParams_TypeDef MbPortParams;
-
-
-
-/* Varikliu presetai */
-struct MotorParamSet{
-    uint8_t ID;                 // preseto ID
-    uint8_t StepsPerRev;        // variklio stepu per apsisukima
-    struct{
-        uint8_t RunValue;           // KVAL_RUN reiksme, %
-        uint8_t AccValue;           // KVAL_ACC reiksme, %
-        uint8_t DecValue;           // KVAL_DEC reiksme, %
-        uint8_t HoldValue;          // KVAL_HOLD reiksme, %
-    }Kval;
-    struct{
-        uint16_t OcdValue;          // OCD_TH reiksme, mA
-        uint16_t StallValue;        // STALL_TH reiksme, mA
-    }Treshold;
-    struct{
-        uint16_t Acceleration;      //
-        uint16_t Deceleration;      //
-    }Speed;
-};
 
 
 /*  */

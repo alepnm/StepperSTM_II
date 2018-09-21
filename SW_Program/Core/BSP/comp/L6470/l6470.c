@@ -30,7 +30,7 @@ KVAL ~42 -> 5.40V
 /* bandomasis presetas ( variklis 23HS22-1504S )
 tuscios eigos itampa = 33V
 */
-static const struct MotorParamSet ParamSet0 = {
+static const MotorParamSet ParamSet0 = {
     .ID = 0x00, .StepsPerRev = 200,
 
     //.Kval = { .RunValue = 36, .AccValue = 38, .DecValue = 34, .HoldValue = 5 },   //<-- variklis po keliu valandu darbo pradeda strigineti (neuztenka sroves)
@@ -52,7 +52,7 @@ static const struct MotorParamSet ParamSet0 = {
 
 
 // 57BYGH201AA variklio presetas (2.8V/2A) - ok
-static const struct MotorParamSet ParamSet1 = {
+static const MotorParamSet ParamSet1 = {
     .ID = 0x01, .StepsPerRev = 200,
     .Kval = { .RunValue = 20, .AccValue = 22, .DecValue = 18, .HoldValue = 5 },
     .Treshold = { .OcdValue = 3000, .StallValue = 3000 },
@@ -61,7 +61,7 @@ static const struct MotorParamSet ParamSet1 = {
 
 
 // 57BYGH748AA variklio presetas (3A) - ok
-static const struct MotorParamSet ParamSet2 = {
+static const MotorParamSet ParamSet2 = {
     .ID = 0x02, .StepsPerRev = 200,
     .Kval = { .RunValue = 28, .AccValue = 28, .DecValue = 28, .HoldValue = 5 },
     .Treshold = { .OcdValue = MAX_TRES_OCD_MA_DEF, .StallValue = MAX_TRES_OCD_MA_DEF },
@@ -69,7 +69,7 @@ static const struct MotorParamSet ParamSet2 = {
 };
 
 // MICROCON SX34-2740N variklio presetas (2.5A)
-static const struct MotorParamSet ParamSet3 = {
+static const MotorParamSet ParamSet3 = {
     .ID = 0x03, .StepsPerRev = 200,
     .Kval = { .RunValue = 40, .AccValue = 40, .DecValue = 40, .HoldValue = 5 },
     .Treshold = { .OcdValue = MAX_TRES_OCD_MA_DEF, .StallValue = MAX_TRES_OCD_MA_DEF },
@@ -78,7 +78,7 @@ static const struct MotorParamSet ParamSet3 = {
 
 
 // MATSUSHITA KP39HM4-016 variklio presetas (12V/0.08A) - ok
-static const struct MotorParamSet ParamSet4 = {
+static const MotorParamSet ParamSet4 = {
     .ID = 0x04, .StepsPerRev = 100,
     .Kval = { .RunValue = 100, .AccValue = 100, .DecValue = 100, .HoldValue = 5 },
     .Treshold = { .OcdValue = 400, .StallValue = 400 },
@@ -86,7 +86,7 @@ static const struct MotorParamSet ParamSet4 = {
 };
 
 //--------
-static const struct MotorParamSet ParamSet5 = {
+static const MotorParamSet ParamSet5 = {
     .ID = 0x05, .StepsPerRev = 200,
     .Kval = { .RunValue = 22, .AccValue = 22, .DecValue = 22, .HoldValue = 5 },
     .Treshold = { .OcdValue = 1000, .StallValue = 1000 },
@@ -94,7 +94,7 @@ static const struct MotorParamSet ParamSet5 = {
 };
 
 //--------
-static const struct MotorParamSet ParamSet6 = {
+static const MotorParamSet ParamSet6 = {
     .ID = 0x06, .StepsPerRev = 200,
     .Kval = { .RunValue = 22, .AccValue = 22, .DecValue = 22, .HoldValue = 5 },
     .Treshold = { .OcdValue = 1000, .StallValue = 1000 },
@@ -102,7 +102,7 @@ static const struct MotorParamSet ParamSet6 = {
 };
 
 // 7-as setas ( UserSet ) userio - vartotojas parametrus nustato modbase
-static struct MotorParamSet UserSet = {
+static MotorParamSet UserMotorParams = {
     .ID = 0x07, .StepsPerRev = 0,
     .Kval = { .RunValue = 0, .AccValue = 0, .DecValue = 0, .HoldValue = 0 },
     .Treshold = { .OcdValue = 1000, .StallValue = 1000 },
@@ -111,7 +111,7 @@ static struct MotorParamSet UserSet = {
 
 
 /* Varikliu presetu pointeriai */
-static const struct MotorParamSet* MotorPresets[8] = { &ParamSet0, &ParamSet1, &ParamSet2, &ParamSet3, &ParamSet4, &ParamSet5, &ParamSet6, &UserSet };
+static const MotorParamSet* MotorPresets[8] = { &ParamSet0, &ParamSet1, &ParamSet2, &ParamSet3, &ParamSet4, &ParamSet5, &ParamSet6, &UserMotorParams };
 
 
 /* private functions */
@@ -145,7 +145,7 @@ void L6470_Init(void) {
 
 /* Grazina pointeri i aktyvu preseta
 */
-const struct MotorParamSet* Preset(uint8_t preset_id) {
+const MotorParamSet* GetPresetByID(uint8_t preset_id) {
     return MotorPresets[preset_id];
 }
 
