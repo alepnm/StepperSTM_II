@@ -4049,16 +4049,14 @@
 1537515415 c:\working\git\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
 	"common.h"
 
-1537387828 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
-	<stdlib.h>
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.c
 	"M25AAxx.h"
 	"board.h"
 
-1537374470 d:\projects\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
-	<stdbool.h>
-	<stdint.h>
+1537637732 d:\projects\stepperstm_ii\sw_program\core\bsp\comp\m25aax\m25aaxx.h
+	"common.h"
 
-1537389875 d:\projects\stepperstm_ii\sw_program\core\bsp\board\board.h
+1537637732 d:\projects\stepperstm_ii\sw_program\core\bsp\board\board.h
 	"stm32f0xx_hal.h"
 	"common.h"
 	"hw_typedefs.h"
@@ -4097,8 +4095,7 @@
 	"stm32f0xx_hal_usart.h"
 	"stm32f0xx_hal_wwdg.h"
 
-1537389760 d:\projects\stepperstm_ii\sw_program\core\inc\main.h
-	<stdint.h>
+1537730296 d:\projects\stepperstm_ii\sw_program\core\inc\main.h
 	"defs.h"
 
 1523694476 d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_rcc.h
@@ -4110,7 +4107,7 @@
 	"Legacy/stm32_hal_legacy.h"
 	<stdio.h>
 
-1523694474 d:\projects\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
+1537730766 d:\projects\stepperstm_ii\sw_program\drivers\cmsis\device\st\stm32f0xx\include\stm32f0xx.h
 	"stm32f030x6.h"
 	"stm32f030x8.h"
 	"stm32f031x6.h"
@@ -4382,11 +4379,12 @@
 1523694476 d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_hal_wwdg.h
 	"stm32f0xx_hal_def.h"
 
-1537390099 d:\projects\stepperstm_ii\sw_program\core\inc\common.h
+1537637732 d:\projects\stepperstm_ii\sw_program\core\inc\common.h
 	<stdint.h>
 	<stdbool.h>
 	<math.h>
 	<stdlib.h>
+	<string.h>
 
 1537374470 d:\projects\stepperstm_ii\sw_program\core\bsp\board\hw_typedefs.h
 
@@ -4495,7 +4493,7 @@
 	"mbproto.h"
 	"user_mb_app.h"
 
-1537374470 source:d:\projects\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\mb.c
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\libs\freemodbus\modbus\mb.c
 	<stdlib.h>
 	<string.h>
 	"port.h"
@@ -4556,7 +4554,7 @@
 	"mb.h"
 	"mbport.h"
 
-1537374470 source:d:\projects\stepperstm_ii\sw_program\core\libs\systick\systick.c
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\libs\systick\systick.c
 	"board.h"
 	"systick.h"
 
@@ -4568,7 +4566,7 @@
 1537389760 source:d:\projects\stepperstm_ii\sw_program\core\src\stm32f0xx_hal_msp.c
 	"stm32f0xx_hal.h"
 
-1537390258 source:d:\projects\stepperstm_ii\sw_program\core\src\stm32f0xx_it.c
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\src\stm32f0xx_it.c
 	"stm32f0xx_hal.h"
 	"stm32f0xx.h"
 	"stm32f0xx_it.h"
@@ -4760,12 +4758,12 @@
 1523694476 d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_exti.h
 	"stm32f0xx.h"
 
-1523694476 source:d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_gpio.c
+1537730664 source:d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_gpio.c
 	"stm32f0xx_ll_gpio.h"
 	"stm32f0xx_ll_bus.h"
 	"stm32_assert.h"
 
-1523694476 d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_gpio.h
+1537727905 d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_gpio.h
 	"stm32f0xx.h"
 
 1523694476 source:d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\src\stm32f0xx_ll_i2c.c
@@ -4841,30 +4839,30 @@
 
 1537374471 source:d:\projects\stepperstm_ii\sw_program\startup\startup_stm32f0xx.s
 
-1537391159 source:d:\projects\stepperstm_ii\sw_program\core\src\main.c
+1537649230 source:d:\projects\stepperstm_ii\sw_program\core\src\main.c
 	"main.h"
 	"stm32f0xx_hal.h"
-	<string.h>
-	"mb.h"
+	"software.h"
 	"user_mb_app.h"
-	"M25AAxx.h"
-	"l6470.h"
-	"sound.h"
+	"board_cmsis.h"
 
-1537390138 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.c
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.c
 	"l6470.h"
 	"board.h"
 
-1537387828 d:\projects\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.h
+1537637732 d:\projects\stepperstm_ii\sw_program\core\bsp\comp\l6470\l6470.h
 	"common.h"
 
-1537391532 d:\projects\stepperstm_ii\sw_program\core\inc\defs.h
+1537637732 d:\projects\stepperstm_ii\sw_program\core\inc\defs.h
+	<stdint.h>
+	"fsm.h"
+	"l6470.h"
 
-1537389071 source:d:\projects\stepperstm_ii\sw_program\core\libs\sound\sound.c
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\libs\sound\sound.c
 	"board.h"
 	"sound.h"
 
-1537388607 d:\projects\stepperstm_ii\sw_program\core\libs\sound\sound.h
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\sound\sound.h
 
 1537532086 c:\working\git\stepperstm_ii\sw_program\core\inc\defs.h
 	<stdint.h>
@@ -4950,4 +4948,93 @@
 1537529192 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_config.c
 
 1537537526 c:\working\git\stepperstm_ii\sw_program\core\libs\fsm\fsm_init.c
+
+1537646162 source:d:\projects\stepperstm_ii\sw_program\core\bsp\board\board.c
+	"board.h"
+	"board_cmsis.h"
+	"software.h"
+	"user_mb_app.h"
+	"sound.h"
+	"l6470.h"
+	"M25AAxx.h"
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm.h
+	"common.h"
+	"l6470.h"
+
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\bsp\comp\iic_eeprom\iic_eeprom.c
+	<stdlib.h>
+	<string.h>
+	"iic_eeprom.h"
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\bsp\comp\iic_eeprom\iic_eeprom.h
+	"board.h"
+
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_config.c
+
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_fault.c
+
+1537637732 source:d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_normal.c
+	"user_mb_app.h"
+
+1537638865 source:d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm.c
+	"fsm.h"
+	"defs.h"
+	"board.h"
+	"fsm_init.c"
+	"fsm_stop.c"
+	"fsm_normal.c"
+	"fsm_scroll.c"
+	"fsm_fault.c"
+	"fsm_test.c"
+	"fsm_config.c"
+
+1537640501 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_init.c
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_stop.c
+	"user_mb_app.h"
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_normal.c
+	"user_mb_app.h"
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_scroll.c
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_fault.c
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_test.c
+
+1537637732 d:\projects\stepperstm_ii\sw_program\core\libs\fsm\fsm_config.c
+
+1537642262 source:d:\projects\stepperstm_ii\sw_program\core\src\software.c
+	"software.h"
+	"common.h"
+	"fsm.h"
+	"mb.h"
+	"user_mb_app.h"
+	"M25AAxx.h"
+	"l6470.h"
+	"sound.h"
+
+1537641916 d:\projects\stepperstm_ii\sw_program\core\inc\software.h
+	"common.h"
+	"board.h"
+
+1537735953 source:d:\projects\stepperstm_ii\sw_program\core\bsp\board\board_cmsis.c
+	"board_cmsis.h"
+
+1537735986 d:\projects\stepperstm_ii\sw_program\core\bsp\board\board_cmsis.h
+	"stm32f0xx_ll_adc.h"
+	"stm32f0xx_ll_gpio.h"
+	"stm32f0xx_ll_rcc.h"
+	"stm32f0xx_ll_bus.h"
+
+1537734589 source:d:\projects\stepperstm_ii\sw_program\core\src\main_cmsis.c
+	"main_cmsis.h"
+	"board_cmsis.h"
+
+1537730381 d:\projects\stepperstm_ii\sw_program\core\inc\main_cmsis.h
+	"stm32f0xx.h"
+
+1523694476 d:\projects\stepperstm_ii\sw_program\drivers\stm32f0xx_hal_driver\inc\stm32f0xx_ll_iwdg.h
+	"stm32f0xx.h"
 

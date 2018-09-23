@@ -1,5 +1,7 @@
 
 #include "board.h"
+#include "board_cmsis.h"
+#include "software.h"
 #include "user_mb_app.h"
 #include "sound.h"
 #include "l6470.h"
@@ -10,6 +12,7 @@ UART_HandleTypeDef* ports[] = {&huart1, NULL, NULL};
 
 
 /* Functions prototypes */
+//extern void                 ReadDipSwitch(void);
 extern HAL_StatusTypeDef    CheckBaudrateValue(uint32_t baudrate);
 extern HAL_StatusTypeDef    CheckBaudrateIndex( uint8_t idx );
 extern uint32_t             GetBaudrateByIndex( uint8_t idx );
@@ -47,6 +50,15 @@ void BSP_HW_Init(void) {
 
     /* skaitom UID */
     (void)M25AAxx_Init();
+
+    ReadDipSwitch();
+
+
+    UserTimersInit();
+
+
+    SoundInit( true );
+
 
     /* konfiguruojam L6470 */
     L6470_Init();
